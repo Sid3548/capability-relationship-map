@@ -22,9 +22,11 @@ METHOD: neuron = one channel of MLP intermediate silu(gate)*up (= down_proj inpu
 BATTERIES: data/batteries/comprehensive/*.jsonl  (15 caps x 40 prompts; built by scripts/build_comprehensive.py).
 DELIVERABLES per model: A=15x15 active-set overlap; B=neuron allocation (dead/core/shared/exclusive-per-cap); C=global stress sweep to 70% least-used-first + random control -> fragility ranking (which cap fails first); D=15x15 interlink (remove each cap's low-envelope & specific-high, eval all 15).
 
+MODEL LOADING GOTCHA: HF hub revalidation HANGS (unauthenticated HEAD requests) and offline-by-id can misresolve. ALWAYS load from the LOCAL snapshot dir with offline env vars. Get path: SNAP=$(ls -d ~/.cache/huggingface/hub/models--<org>--<name>/snapshots/*/ | head -1)
+
 RUN A DENSE MODEL (resume-safe; reuses baselines.json/aggregates if present):
   cd C:/Users/user/capability-relationship-map
-  .venv/Scripts/python.exe -u -m scripts.run_full <hf_model_id> results/comprehensive_<tag> 0.70  > logs/<tag>.log 2>&1
+  HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 .venv/Scripts/python.exe -u -m scripts.run_full "$SNAP" results/comprehensive_<tag> 0.70  > logs/<tag>.log 2>&1
 Resume just C+D for 0.5B (aggregates already captured):
   .venv/Scripts/python.exe -u -m scripts.run_cd Qwen/Qwen2.5-0.5B results/comprehensive_qwen0.5b 0.70
 

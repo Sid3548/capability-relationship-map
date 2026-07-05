@@ -1,3 +1,4 @@
-[15:00:55] loading Qwen/Qwen2.5-3B
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]
+[15:07:25] loading C:/Users/user/.cache/huggingface/hub/models--Qwen--Qwen2.5-3B/snapshots/3aab1f1954e9cc14eb9509a215f9e5ca08227a9b/
+Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]Loading weights: 100%|##########| 434/434 [00:00<00:00, 15500.99it/s]
+[15:07:28] layers=36 intermediate=11008 total_mlp_neurons=396288 0.1%=396
+[15:07:28] baselines
