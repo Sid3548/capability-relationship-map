@@ -1,0 +1,27 @@
+{
+  "model_name": "Qwen/Qwen2.5-0.5B",
+  "seed": 1234,
+  "threshold_main": 0.8,
+  "threshold_reason": "per-layer percentile (SiLU scale unbounded/layer-dependent)",
+  "total_mlp_neurons": 116736,
+  "max_fraction": 0.7,
+  "git_hash": "82743e618d34559a8122f6a13b7905fd7c336a6b",
+  "timestamp": "2026-07-05T15:00:11.914131",
+  "caps": [
+    "coding",
+    "math",
+    "formal_logic",
+    "grammar",
+    "translation",
+    "reading_comprehension",
+    "history_facts",
+    "philosophy",
+    "science_facts",
+    "commonsense",
+    "problem_solving",
+    "creative_writing",
+    "summarization",
+    "spatial_pattern",
+    "ethics"
+  ]
+}

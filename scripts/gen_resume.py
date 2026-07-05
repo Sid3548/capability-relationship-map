@@ -46,8 +46,8 @@ BLOCK = f"""<!--RESUME_START-->
 <h3>Live status snapshot</h3>
 <table>
 <tr><th>Model</th><th>tag / results dir</th><th>A overlap</th><th>B alloc</th><th>C fragility</th><th>D interlink</th><th>HTML sec</th></tr>
-<tr><td>Qwen2.5-0.5B</td><td class="muted">qwen0.5b</td><td class="good">done</td><td class="good">done</td><td class="good">done</td><td class="muted">running</td><td>13</td></tr>
-<tr><td>Qwen2.5-3B</td><td class="muted">qwen3b</td><td colspan="4" class="muted">downloaded, next up (run_full)</td><td>14</td></tr>
+<tr><td>Qwen2.5-0.5B</td><td class="muted">qwen0.5b</td><td class="good">done</td><td class="good">done</td><td class="good">done</td><td class="good">done</td><td>13 ✅</td></tr>
+<tr><td>Qwen2.5-3B</td><td class="muted">qwen3b</td><td colspan="4" class="good">RUNNING now (run_full, results/comprehensive_qwen3b)</td><td>14</td></tr>
 <tr><td>Phi-4-mini-instruct</td><td class="muted">phi4mini</td><td colspan="4" class="muted">downloading, queued (dense, Western)</td><td>15</td></tr>
 <tr><td>gpt-oss-20b (MoE)</td><td class="muted">gptoss20b</td><td colspan="4" class="muted">downloading, LAST — needs MoE adapter</td><td>16</td></tr>
 </table>
@@ -76,7 +76,7 @@ BLOCK = f"""<!--RESUME_START-->
 raw = HTMLF.read_text(encoding="utf-8")
 import re
 if "<!--RESUME_START-->" in raw:
-    raw = re.sub(r"<!--RESUME_START-->.*?<!--RESUME_END-->", BLOCK.strip(), raw, flags=re.DOTALL)
+    raw = re.sub(r"<!--RESUME_START-->.*?<!--RESUME_END-->", lambda m: BLOCK.strip(), raw, flags=re.DOTALL)
     action = "updated"
 else:
     anchor = '<div class="panel toc">'

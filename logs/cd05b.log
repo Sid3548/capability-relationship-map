@@ -54,3 +54,12 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
 [14:07:32]   target translation done (1846s)
 [14:13:02]   target reading_comprehension done (2176s)
 [14:17:43]   target history_facts done (2457s)
+[14:24:31]   target philosophy done (2864s)
+[14:29:21]   target science_facts done (3154s)
+[14:35:20]   target commonsense done (3513s)
+[14:40:38]   target problem_solving done (3831s)
+[14:44:35]   target creative_writing done (4069s)
+[14:49:33]   target summarization done (4367s)
+[14:55:34]   target spatial_pattern done (4728s)
+[15:00:11]   target ethics done (5005s)
+[15:00:11] DONE C+D -> C:\Users\user\capability-relationship-map\results\comprehensive_qwen0.5b
