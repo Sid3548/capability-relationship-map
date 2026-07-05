@@ -35,3 +35,5 @@
 [15:48:18]   step 160/700 frac=0.160 worst=ethics:3.31 el=2155s
 [15:51:11]   step 180/700 frac=0.180 worst=ethics:2.47 el=2328s
 [15:54:06]   step 200/700 frac=0.200 worst=ethics:2.95 el=2503s
+[16:01:59]   step 210/700 frac=0.210 worst=grammar:2.92 el=2976s
+[16:03:27]   step 220/700 frac=0.220 worst=ethics:3.08 el=3064s

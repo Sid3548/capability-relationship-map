@@ -9,7 +9,7 @@ STAMP = time.strftime("%Y-%m-%d %H:%M")
 
 STARTUP_PROMPT = """You are resuming the Capability Removal-Envelope COMPREHENSIVE experiment on this Windows PC (RTX 4060 Ti, 16GB). Read this whole HTML first: C:\\Users\\user\\Desktop\\Capability Removal-Envelope Experiment - Context Handoff.html  (esp. this RESUME section + sections 12-13).
 
-REPO: C:\\Users\\user\\capability-relationship-map (git).  VENV: .venv  (torch 2.6.0+cu124, transformers 5.13.0, Python 3.12).
+REPO: capability-relationship-map/  (all data paths below are RELATIVE to this folder). On this machine it lives at C:\\Users\\user\\capability-relationship-map ; run shell commands from your home dir C:\\Users\\user.  VENV: .venv  (torch 2.6.0+cu124, transformers 5.13.0, Python 3.12).
 
 HARD RULES:
 - YOU (orchestrator) do ALL writing/HTML/analysis directly via Bash + python scripts. Do NOT spend sub-agent tokens on writing; if you use a sub-agent it computes only and dumps to disk.
@@ -25,7 +25,7 @@ DELIVERABLES per model: A=15x15 active-set overlap; B=neuron allocation (dead/co
 MODEL LOADING GOTCHA: HF hub revalidation HANGS (unauthenticated HEAD requests) and offline-by-id can misresolve. ALWAYS load from the LOCAL snapshot dir with offline env vars. Get path: SNAP=$(ls -d ~/.cache/huggingface/hub/models--<org>--<name>/snapshots/*/ | head -1)
 
 RUN A DENSE MODEL (resume-safe; reuses baselines.json/aggregates if present):
-  cd C:/Users/user/capability-relationship-map
+  cd capability-relationship-map
   HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 .venv/Scripts/python.exe -u -m scripts.run_full "$SNAP" results/comprehensive_<tag> 0.70  > logs/<tag>.log 2>&1
 Resume just C+D for 0.5B (aggregates already captured):
   .venv/Scripts/python.exe -u -m scripts.run_cd Qwen/Qwen2.5-0.5B results/comprehensive_qwen0.5b 0.70
@@ -53,7 +53,7 @@ BLOCK = f"""<!--RESUME_START-->
 <tr><td>Phi-4-mini-instruct</td><td class="muted">phi4mini</td><td colspan="4" class="muted">downloading, queued (dense, Western)</td><td>15</td></tr>
 <tr><td>gpt-oss-20b (MoE)</td><td class="muted">gptoss20b</td><td colspan="4" class="muted">downloading, LAST — needs MoE adapter</td><td>16</td></tr>
 </table>
-<p class="muted">Verify against disk: <code>git -C C:/Users/user/capability-relationship-map log --oneline</code> and <code>ls results/comprehensive_*/</code> show the true latest state (this snapshot may lag).</p>
+<p class="muted">Verify against disk: <code>git -C capability-relationship-map log --oneline</code> and <code>ls results/comprehensive_*/</code> show the true latest state (this snapshot may lag).</p>
 
 <h3>Estimated time (single GPU, sequential) — as of {STAMP}</h3>
 <table>
@@ -67,7 +67,7 @@ BLOCK = f"""<!--RESUME_START-->
 
 <h3>File map</h3>
 <ul>
-<li><strong>Repo:</strong> <code>C:\\Users\\user\\capability-relationship-map</code> (git) · <strong>venv:</strong> <code>.venv</code></li>
+<li><strong>Repo:</strong> <code>capability-relationship-map</code> (git) · <strong>venv:</strong> <code>.venv</code></li>
 <li><strong>Pipeline:</strong> <code>scripts/run_full.py</code> (full A-D, JSON-only, dense) · <code>scripts/run_cd.py</code> (C+D reuse aggregates) · <code>scripts/build_comprehensive.py</code> (batteries) · <code>scripts/gen_resume.py</code> (this section)</li>
 <li><strong>Core src:</strong> <code>src/models.py, hooks.py, capture.py, scoring.py, ablation.py, eval/*</code></li>
 <li><strong>Results:</strong> <code>results/comprehensive_&lt;tag&gt;/</code> → baselines.json, aggregates_mean_abs.npz, A_overlap.json, B_allocation.json, C_stress.json, C_stress_rows.jsonl, D_interlink.json, manifest.json</li>
