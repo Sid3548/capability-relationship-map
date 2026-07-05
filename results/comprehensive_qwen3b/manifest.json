@@ -1,0 +1,26 @@
+{
+  "model_name": "C:/Users/user/.cache/huggingface/hub/models--Qwen--Qwen2.5-3B/snapshots/3aab1f1954e9cc14eb9509a215f9e5ca08227a9b/",
+  "seed": 1234,
+  "threshold_main": 0.8,
+  "total_mlp_neurons": 396288,
+  "max_fraction": 0.7,
+  "git_hash": "6fa02ad060959a556cd28b5fe5718aa98b19424a",
+  "timestamp": "2026-07-05T20:29:04.200901",
+  "caps": [
+    "coding",
+    "math",
+    "formal_logic",
+    "grammar",
+    "translation",
+    "reading_comprehension",
+    "history_facts",
+    "philosophy",
+    "science_facts",
+    "commonsense",
+    "problem_solving",
+    "creative_writing",
+    "summarization",
+    "spatial_pattern",
+    "ethics"
+  ]
+}
