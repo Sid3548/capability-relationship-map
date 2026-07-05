@@ -1,0 +1,15 @@
+# Coding cliff sweep: push the low-activation envelope past 10% on the cheap
+# teacher-forced NLL track to find where coding FINALLY breaks (the cliff).
+# Only the low control (the envelope) + random as a reference; NLL every step,
+# generation eval on coarse checkpoints.
+target_task: "coding"
+other_tasks: ["math"]
+step_fraction: 0.001          # keep 0.1% steps (guardrail)
+max_fraction: 0.50            # push to 50% removed on the loss track
+loss_eval_every_steps: 1      # smooth NLL every 0.1% step (cheap)
+gen_eval_every_steps: 50      # generation checkpoints every ~5%
+controls: ["low", "random"]
+random_seeds: [0, 1, 2]
+ablation_mode: "mean"
+score_stat: "mean_abs"
+core_percentile: 0.99

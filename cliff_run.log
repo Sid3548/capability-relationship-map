@@ -1,0 +1,7 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 14501.22it/s]
+loaded; total_mlp_neurons=116736
+[capture] task=coding activation shape on layer0: (1, 62, 4864) (B,S,intermediate)
+[capture] task=math activation shape on layer0: (1, 20, 4864) (B,S,intermediate)
+core neurons: 253
+[sweep] step=0 control=low seed=None frac=0.0000 nll_target=0.8191336803138256 acc_target=0.75

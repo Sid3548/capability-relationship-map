@@ -44,6 +44,57 @@ def compute_core_mask(
     return core
 
 
+def compute_core_mask_multi(ranks_by_task: dict, core_percentile: float = 0.95) -> np.ndarray:
+    """core[l,i] = True iff neuron's percentile rank >= core_percentile on
+    EVERY task. Shared-importance neurons, excluded from all removal (any
+    control, any target). ranks_by_task: {task_name: rank_array[L,I]}."""
+    tasks = list(ranks_by_task.keys())
+    core = ranks_by_task[tasks[0]] >= core_percentile
+    for t in tasks[1:]:
+        core = core & (ranks_by_task[t] >= core_percentile)
+    return core
+
+
+def compute_specific_high_mask(
+    target_task: str,
+    ranks_by_task: dict,
+    core_mask: np.ndarray,
+    p_high: float = 0.85,
+    p_low: float = 0.60,
+) -> np.ndarray:
+    """A-specific-high: high rank for the target task AND low rank for EVERY
+    other task, excluding core. This is the INTERLINK concept -- kept
+    strictly separate from the A-low removal envelope. Returns bool [L,I]."""
+    mask = ranks_by_task[target_task] >= p_high
+    for t, r in ranks_by_task.items():
+        if t == target_task:
+            continue
+        mask = mask & (r <= p_low)
+    mask = mask & (~core_mask)
+    return mask
+
+
+def compute_low_envelope_mask(
+    target_task: str, ranks_by_task: dict, core_mask: np.ndarray, budget_fraction: float
+) -> np.ndarray:
+    """A-low envelope: the lowest-target-rank neurons (weakest first), minus
+    core, up to budget_fraction of total neurons. Returns bool [L,I].
+    Kept strictly separate from A-specific-high above."""
+    rank = ranks_by_task[target_task]
+    L, I = rank.shape
+    total = L * I
+    budget = int(round(budget_fraction * total))
+    non_core = ~core_mask
+    flat_rank = rank.reshape(-1)
+    flat_nc = non_core.reshape(-1)
+    eligible = np.nonzero(flat_nc)[0]
+    order_asc = eligible[np.argsort(flat_rank[eligible], kind="mergesort")]
+    chosen = order_asc[:budget]
+    mask = np.zeros(total, dtype=bool)
+    mask[chosen] = True
+    return mask.reshape(L, I)
+
+
 def print_sanity_topbottom(agg: np.ndarray, ranks: np.ndarray, task: str, stat: str, k: int = 5):
     """Print top-k and bottom-k (layer, channel) neurons by rank, as a
     sanity check that percentile normalization behaves sensibly."""

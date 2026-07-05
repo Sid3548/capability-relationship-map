@@ -125,3 +125,16 @@ def attach_ablation_hooks(
 def remove_ablation_hooks(handles: list):
     for h in handles:
         h.remove()
+
+
+def mask_to_channels_by_layer(mask: np.ndarray) -> list[np.ndarray]:
+    """Convert a boolean [L, I] mask into a per-layer list of channel indices
+    to ablate."""
+    L, I = mask.shape
+    return [np.nonzero(mask[l])[0].astype(np.int64) for l in range(L)]
+
+
+def attach_ablation_hooks_from_mask(bundle, mask: np.ndarray, mode: str, calibration_means):
+    """Attach reversible ablation hooks for the neurons marked True in mask."""
+    channels_by_layer = mask_to_channels_by_layer(mask)
+    return attach_ablation_hooks(bundle, channels_by_layer, mode, calibration_means)

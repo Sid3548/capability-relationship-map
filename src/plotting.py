@@ -64,6 +64,30 @@ def plot_accuracy_curve(df: pd.DataFrame, target_task: str, out_path: str | Path
     plt.close(fig)
 
 
-def plot_interlink_heatmap(*args, **kwargs):
-    """Stub -- interlink N x N matrix is out of scope for this smoke run."""
-    raise NotImplementedError("interlink heatmap is out of scope for the smoke run")
+def plot_interlink_heatmap(matrix, tasks, title, out_path, cmap="RdBu_r", fmt="{:+.2f}", vlim=None):
+    """matrix: [N, N] array, rows = targeted (ablated) task, cols = collateral
+    task measured. Value = delta (post - pre) of acc or loss. Annotated."""
+    import numpy as np
+
+    matrix = np.asarray(matrix, dtype=float)
+    n = len(tasks)
+    if vlim is None:
+        vlim = max(1e-9, np.nanmax(np.abs(matrix)))
+    fig, ax = plt.subplots(figsize=(1.6 * n + 2, 1.6 * n + 1.5))
+    im = ax.imshow(matrix, cmap=cmap, vmin=-vlim, vmax=vlim)
+    ax.set_xticks(range(n)); ax.set_xticklabels(tasks, rotation=30, ha="right")
+    ax.set_yticks(range(n)); ax.set_yticklabels(tasks)
+    ax.set_xlabel("collateral task (measured)")
+    ax.set_ylabel("targeted task (neurons removed)")
+    ax.set_title(title)
+    for i in range(n):
+        for j in range(n):
+            v = matrix[i, j]
+            ax.text(j, i, fmt.format(v), ha="center", va="center",
+                    color="black" if abs(v) < 0.6 * vlim else "white", fontsize=9)
+    fig.colorbar(im, ax=ax, shrink=0.8)
+    fig.tight_layout()
+    Path(out_path).parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out_path, dpi=150)
+    plt.close(fig)
+

@@ -3,3 +3,16 @@
 {"task": "math", "id": "math_03", "prompt": "Q: What is 12 times 8?\nA: The answer is", "gold": "96", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
 {"task": "math", "id": "math_04", "prompt": "Q: What is 144 divided by 12?\nA: The answer is", "gold": "12", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
 {"task": "math", "id": "math_05", "prompt": "Q: If a train travels 60 miles per hour for 3 hours, how many miles does it travel?\nA: The answer is", "gold": "180", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_06", "prompt": "Q: What is 15 percent of 200?\nA: The answer is", "gold": "30", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_07", "prompt": "Q: What is 9 squared?\nA: The answer is", "gold": "81", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_08", "prompt": "Q: What is 250 + 375?\nA: The answer is", "gold": "625", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_09", "prompt": "Q: What is 1000 - 256?\nA: The answer is", "gold": "744", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_10", "prompt": "Q: What is 7 times 13?\nA: The answer is", "gold": "91", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_11", "prompt": "Q: What is 84 divided by 7?\nA: The answer is", "gold": "12", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_12", "prompt": "Q: A shop sells pens at 3 dollars each. How much for 14 pens?\nA: The answer is", "gold": "42", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_13", "prompt": "Q: What is the sum of the first 10 positive integers?\nA: The answer is", "gold": "55", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_14", "prompt": "Q: What is 2 to the power of 10?\nA: The answer is", "gold": "1024", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_15", "prompt": "Q: If 5 apples cost 20 dollars, how much does 1 apple cost?\nA: The answer is", "gold": "4", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_16", "prompt": "Q: What is 360 divided by 8?\nA: The answer is", "gold": "45", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_17", "prompt": "Q: What is 17 + 28 + 5?\nA: The answer is", "gold": "50", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_18", "prompt": "Q: A rectangle is 6 by 9. What is its area?\nA: The answer is", "gold": "54", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}

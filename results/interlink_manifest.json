@@ -1,0 +1,8 @@
+{
+  "git_hash": "07bfc56e46961dd58ab5ac0e00538eff008b0301",
+  "model_name": "Qwen/Qwen2.5-0.5B",
+  "dtype": "bfloat16",
+  "device": "cuda",
+  "seed": 1234,
+  "total_mlp_neurons": 116736
+}

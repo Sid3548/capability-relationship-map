@@ -1,0 +1,68 @@
+== Loading model ==
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 16111.43it/s]
+layers=24 intermediate=4864 total_mlp_neurons=116736
+  battery coding: 16 prompts
+  battery math: 18 prompts
+  battery history: 16 prompts
+  battery reasoning: 16 prompts
+
+== Baselines (all 4 tasks) ==
+  coding    acc=0.750 parse_fail=0.000 nll=0.8191 ppl=2.367
+  math      acc=0.944 parse_fail=0.000 nll=5.5087 ppl=33600.685
+  history   acc=0.875 parse_fail=0.000 nll=1.5960 ppl=10.348
+  reasoning acc=0.438 parse_fail=0.000 nll=1.3081 ppl=4.020
+
+== Capture per-task aggregates ==
+[capture] task=coding activation shape on layer0: (1, 62, 4864) (B,S,intermediate)
+[capture] task=math activation shape on layer0: (1, 20, 4864) (B,S,intermediate)
+[capture] task=history activation shape on layer0: (1, 18, 4864) (B,S,intermediate)
+[capture] task=reasoning activation shape on layer0: (1, 63, 4864) (B,S,intermediate)
+
+== Calibration means (mean-ablation replacement) ==
+
+== Scoring (per-layer percentile per task) ==
+core (high on ALL 4 tasks, p>=0.95): 613 (0.525%)
+
+== A-specific-high counts (rank>=0.85 on target, <=0.6 on all others, minus core) ==
+  coding    specific-high= 2381  low-envelope= 5837 (5.00%)
+  math      specific-high= 2005  low-envelope= 5837 (5.00%)
+  history   specific-high= 2727  low-envelope= 5837 (5.00%)
+  reasoning specific-high= 2940  low-envelope= 5837 (5.00%)
+
+== Pairwise overlap of A-specific-high sets (Jaccard) ==
+  coding & math: inter=0 union=4386 jaccard=0.0000
+  coding & history: inter=0 union=5108 jaccard=0.0000
+  coding & reasoning: inter=0 union=5321 jaccard=0.0000
+  math & reasoning: inter=0 union=4945 jaccard=0.0000
+  history & math: inter=0 union=4732 jaccard=0.0000
+  history & reasoning: inter=0 union=5667 jaccard=0.0000
+
+== INTERLINK: remove each target's env / specific-high, eval all 4 ==
+  target=coding    done (112.2s)  env self-dacc=-0.19 hi self-dacc=-0.62
+  target=math      done (197.4s)  env self-dacc=-0.11 hi self-dacc=-0.17
+  target=history   done (300.0s)  env self-dacc=+0.06 hi self-dacc=-0.56
+  target=reasoning done (396.8s)  env self-dacc=-0.06 hi self-dacc=+0.00
+
+== Characterize coding low-envelope removed set ==
+  removed 5837 neurons (coding envelope, 5%)
+    on coding   : mean_abs=0.0572 (global median 0.0911) max_abs=0.5424
+    on math     : mean_abs=0.0928 (global median 0.0891) max_abs=0.4082
+    on history  : mean_abs=0.1175 (global median 0.0885) max_abs=0.6999
+    on reasoning: mean_abs=0.0837 (global median 0.0687) max_abs=0.1578
+  fraction effectively dead (mean_abs<0.02 on ALL tasks): 0.001
+  fraction firing more on some other task than coding: 0.949
+
+Saved interlink results to C:\Users\user\capability-relationship-map\results
+Matrices (rows=targeted, cols=measured):
+delta-acc env:
+ [[-0.188 -0.111 -0.062 -0.188]
+ [-0.438 -0.111  0.062 -0.062]
+ [-0.188 -0.111  0.062  0.   ]
+ [-0.688  0.    -0.062 -0.062]]
+delta-acc specific-high:
+ [[-0.625 -0.056 -0.062 -0.25 ]
+ [ 0.125 -0.167  0.    -0.062]
+ [ 0.062  0.    -0.562  0.25 ]
+ [-0.188  0.056  0.062  0.   ]]
+MT_EXIT_0
