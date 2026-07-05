@@ -114,4 +114,6 @@ if cliff_path.exists():
 
 frag.append('<p class="muted">Interlink artifacts: <code>results\\interlink_env_dacc.png</code>, <code>interlink_env_dloss.png</code>, <code>interlink_high_dacc.png</code>, <code>interlink_high_dloss.png</code>, <code>interlink_rows.parquet</code>, <code>interlink_summary.json</code>; cliff: <code>cliff_sweep_coding.parquet</code>. Repo committed; git_hash now recorded in manifests.</p>')
 
-print('\n'.join(frag))
+out_path = REPO / "results" / "job2_fragment.html"
+out_path.write_text('\n'.join(frag), encoding="utf-8")
+print(f"wrote {out_path} ({len(''.join(frag))} chars)")

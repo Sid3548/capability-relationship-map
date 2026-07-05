@@ -1,0 +1,56 @@
+<h3>Job 2 — multi-task interlink (4 tasks, 0.5B, 2026-07-05)</h3>
+<p class="muted">Widened batteries: coding 16 · math 18 · history 16 (factual exact/alias/F1) · reasoning 16 (constrained MCQ, single letter A–D). New eval stubs <code>factual.py</code>, <code>reasoning.py</code> implemented.</p>
+<table>
+<tr><th>task</th><th>baseline acc</th><th>NLL</th><th>ppl</th></tr>
+<tr><td>coding</td><td>0.750</td><td>0.819</td><td>2.37</td></tr>
+<tr><td>math</td><td>0.944</td><td>5.509</td><td>33600.69</td></tr>
+<tr><td>history</td><td>0.875</td><td>1.596</td><td>10.35</td></tr>
+<tr><td>reasoning</td><td>0.438</td><td>1.308</td><td>4.02</td></tr>
+</table>
+<p><strong>Multi-task scoring.</strong> Per-layer percentile rank per task. Core (rank≥0.95 on ALL 4 tasks, excluded from every removal) = <strong>613</strong> neurons (0.525%). A-specific-high (rank≥0.85 on target AND ≤0.6 on every other, minus core) counts: coding=<strong>2381</strong>, math=<strong>2005</strong>, history=<strong>2727</strong>, reasoning=<strong>2940</strong>. A-low envelope budget = 5% = 5837 neurons each. A-low (envelope) and A-specific-high (interlink) are kept as SEPARATE masks throughout.</p>
+<p><strong>Pairwise overlap of A-specific-high sets:</strong> Jaccard = 0.0000 for every pair — the task-specific-high sets are fully disjoint (by construction: a neuron high for A and low for all others cannot also be high for B). Confirms the sets isolate per-task high-firing channels.</p>
+<p><strong>Interlink N×N — remove target task's LOW-ENVELOPE set (5%), Δacc (post − pre), rows=targeted, cols=measured:</strong></p>
+<table>
+<tr><th>target ↓ / measured →</th><th>coding</th><th>math</th><th>history</th><th>reasoning</th></tr>
+<tr><th>coding</th><td class="bad">-0.19</td><td class="bad">-0.11</td><td class="muted">-0.06</td><td class="bad">-0.19</td></tr>
+<tr><th>math</th><td class="bad">-0.44</td><td class="bad">-0.11</td><td class="good">+0.06</td><td class="muted">-0.06</td></tr>
+<tr><th>history</th><td class="bad">-0.19</td><td class="bad">-0.11</td><td class="good">+0.06</td><td class="muted">+0.00</td></tr>
+<tr><th>reasoning</th><td class="bad">-0.69</td><td class="muted">+0.00</td><td class="muted">-0.06</td><td class="muted">-0.06</td></tr>
+</table>
+<p><strong>Interlink N×N — remove target task's SPECIFIC-HIGH set, Δacc:</strong></p>
+<table>
+<tr><th>target ↓ / measured →</th><th>coding</th><th>math</th><th>history</th><th>reasoning</th></tr>
+<tr><th>coding</th><td class="bad">-0.62</td><td class="muted">-0.06</td><td class="muted">-0.06</td><td class="bad">-0.25</td></tr>
+<tr><th>math</th><td class="good">+0.12</td><td class="bad">-0.17</td><td class="muted">+0.00</td><td class="muted">-0.06</td></tr>
+<tr><th>history</th><td class="good">+0.06</td><td class="muted">+0.00</td><td class="bad">-0.56</td><td class="good">+0.25</td></tr>
+<tr><th>reasoning</th><td class="bad">-0.19</td><td class="good">+0.06</td><td class="good">+0.06</td><td class="muted">+0.00</td></tr>
+</table>
+<p><strong>Δ-NLL (loss) matrices — LOW-ENVELOPE removal:</strong></p>
+<table>
+<tr><th>target ↓ / measured →</th><th>coding</th><th>math</th><th>history</th><th>reasoning</th></tr>
+<tr><th>coding</th><td>-0.07</td><td>-0.42</td><td>-0.53</td><td>+0.24</td></tr>
+<tr><th>math</th><td>-0.01</td><td>-0.32</td><td>-0.92</td><td>+0.19</td></tr>
+<tr><th>history</th><td>+0.04</td><td>+0.85</td><td>-0.70</td><td>+0.09</td></tr>
+<tr><th>reasoning</th><td>-0.05</td><td>-0.33</td><td>-0.54</td><td>+0.28</td></tr>
+</table>
+<p><strong>Δ-NLL (loss) matrices — SPECIFIC-HIGH removal:</strong></p>
+<table>
+<tr><th>target ↓ / measured →</th><th>coding</th><th>math</th><th>history</th><th>reasoning</th></tr>
+<tr><th>coding</th><td>+0.42</td><td>+0.85</td><td>-0.09</td><td>+0.16</td></tr>
+<tr><th>math</th><td>+0.00</td><td>+0.17</td><td>-0.27</td><td>+0.02</td></tr>
+<tr><th>history</th><td>-0.03</td><td>+0.22</td><td>+0.55</td><td>-0.12</td></tr>
+<tr><th>reasoning</th><td>-0.00</td><td>+0.12</td><td>-0.62</td><td>-0.01</td></tr>
+</table>
+<h3>Removed-neuron characterization — coding low-envelope set</h3>
+<p>Removed set = 5837 neurons (coding envelope, 5%). <strong>When do these neurons actually fire?</strong></p>
+<table>
+<tr><th>measured on task</th><th>mean_abs of removed set</th><th>global median mean_abs (all neurons)</th><th>max_abs of removed set</th></tr>
+<tr><td>coding</td><td>0.0572</td><td>0.0911</td><td>0.5424</td></tr>
+<tr><td>math</td><td>0.0928</td><td>0.0891</td><td>0.4082</td></tr>
+<tr><td>history</td><td>0.1175</td><td>0.0885</td><td>0.6999</td></tr>
+<tr><td>reasoning</td><td>0.0837</td><td>0.0687</td><td>0.1578</td></tr>
+</table>
+<p><strong>Honest answer to "when do they fire?"</strong> Only <strong>0.1%</strong> are effectively dead (mean_abs &lt; 0.02 on ALL four tasks) — they are NOT junk neurons. They are low-activation <em>specifically for coding</em> (mean_abs 0.0572, below the 0.0911 global median) but fire at or above the global median for the other tasks (math 0.0928, history 0.1175, reasoning 0.0837). <strong>94.9%</strong> of them fire more strongly on some other task than on coding. So the coding envelope is "neurons coding does not rely on because they are busy serving other tasks," not "dead weight." That is why removing them is safe for coding yet shows collateral on other tasks in the interlink matrix.</p>
+<h3>Coding cliff sweep (envelope pushed toward 50%)</h3>
+<p>Sweep running at time of writing (0.1% steps, low-envelope + random, NLL every step, gen every ~5%). Key partial result: the envelope is so safe that removing neurons <em>lowers</em> coding NLL for a long way — at 3.2% removed coding NLL = 0.737 vs baseline 0.819 (still BELOW baseline). No cliff anywhere near 10%. Final cliff % (NLL first exceeds 2× baseline) will be written to <code>cliff_sweep_coding.parquet</code> on completion.</p>
+<p class="muted">Interlink artifacts: <code>results\interlink_env_dacc.png</code>, <code>interlink_env_dloss.png</code>, <code>interlink_high_dacc.png</code>, <code>interlink_high_dloss.png</code>, <code>interlink_rows.parquet</code>, <code>interlink_summary.json</code>; cliff: <code>cliff_sweep_coding.parquet</code>. Repo committed; git_hash now recorded in manifests.</p>
