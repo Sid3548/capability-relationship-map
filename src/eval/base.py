@@ -125,3 +125,52 @@ def teacher_forced_nll(bundle, prompt: str, gold: str) -> dict:
         "attn_mask": attn_mask,
         "answer_mask": answer_mask,  # [1, T] bool, True at answer-token positions
     }
+
+
+@torch.no_grad()
+def batched_teacher_forced_nll(bundle, pairs, max_batch=16) -> dict:
+    """Batched teacher-forced NLL over gold tokens for a list of (prompt, gold)
+    pairs. Left-padding not needed -- we right-pad and mask. Returns
+    {mean_nll, mean_ppl, per_item_nll}. MUCH faster than per-item for sweeps.
+
+    Each sequence = prompt_ids + gold_ids; loss computed only over gold-token
+    positions; pad positions excluded via attention mask AND loss mask.
+    """
+    tok = bundle.tokenizer
+    device = bundle.device
+    per_nll = []
+    for start in range(0, len(pairs), max_batch):
+        chunk = pairs[start:start + max_batch]
+        seqs = []
+        gold_spans = []  # (prompt_len, total_len)
+        for prompt, gold in chunk:
+            pid = tok(prompt, return_tensors="pt")["input_ids"][0]
+            gid = tok(gold, add_special_tokens=False, return_tensors="pt")["input_ids"][0]
+            if gid.numel() == 0:
+                gid = torch.tensor([tok.eos_token_id])
+            full = torch.cat([pid, gid], dim=0)
+            seqs.append(full)
+            gold_spans.append((pid.shape[0], full.shape[0]))
+        maxlen = max(s.shape[0] for s in seqs)
+        pad_id = tok.pad_token_id
+        batch = torch.full((len(seqs), maxlen), pad_id, dtype=torch.long)
+        attn = torch.zeros((len(seqs), maxlen), dtype=torch.long)
+        for k, s in enumerate(seqs):
+            batch[k, :s.shape[0]] = s
+            attn[k, :s.shape[0]] = 1
+        batch = batch.to(device); attn = attn.to(device)
+        logits = bundle.model(input_ids=batch, attention_mask=attn).logits  # [B,T,V]
+        shift_logits = logits[:, :-1, :].float()
+        shift_labels = batch[:, 1:]
+        logp = torch.log_softmax(shift_logits, dim=-1)
+        gathered = logp.gather(-1, shift_labels.unsqueeze(-1)).squeeze(-1)  # [B,T-1]
+        for k, (plen, tlen) in enumerate(gold_spans):
+            # gold token positions in labels space: indices [plen-1 .. tlen-2]
+            lo = plen - 1
+            hi = tlen - 1
+            span = gathered[k, lo:hi]
+            nll = -span.mean().item()
+            per_nll.append(nll)
+    mean_nll = float(np.mean(per_nll)) if per_nll else None
+    mean_ppl = float(np.exp(mean_nll)) if per_nll else None
+    return {"mean_nll": mean_nll, "mean_ppl": mean_ppl, "per_item_nll": per_nll}

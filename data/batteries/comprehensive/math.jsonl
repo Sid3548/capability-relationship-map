@@ -1,0 +1,40 @@
+{"task": "math", "id": "math_00", "prompt": "Q: What is 47 + 58?\nA: The answer is", "gold": "105", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_01", "prompt": "Q: What is 123 - 47?\nA: The answer is", "gold": "76", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_02", "prompt": "Q: What is 12 times 8?\nA: The answer is", "gold": "96", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_03", "prompt": "Q: What is 144 divided by 12?\nA: The answer is", "gold": "12", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_04", "prompt": "Q: What is 15 percent of 200?\nA: The answer is", "gold": "30", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_05", "prompt": "Q: What is 9 squared?\nA: The answer is", "gold": "81", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_06", "prompt": "Q: What is 250 + 375?\nA: The answer is", "gold": "625", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_07", "prompt": "Q: What is 1000 - 256?\nA: The answer is", "gold": "744", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_08", "prompt": "Q: What is 7 times 13?\nA: The answer is", "gold": "91", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_09", "prompt": "Q: What is 84 divided by 7?\nA: The answer is", "gold": "12", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_10", "prompt": "Q: What is the sum of the first 10 positive integers?\nA: The answer is", "gold": "55", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_11", "prompt": "Q: What is 2 to the power of 10?\nA: The answer is", "gold": "1024", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_12", "prompt": "Q: What is 360 divided by 8?\nA: The answer is", "gold": "45", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_13", "prompt": "Q: A rectangle is 6 by 9. What is its area?\nA: The answer is", "gold": "54", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_14", "prompt": "Q: What is 17 + 28 + 5?\nA: The answer is", "gold": "50", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_15", "prompt": "Q: What is 22 + 46?\nA: The answer is", "gold": "68", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_16", "prompt": "Q: What is 22 + 33?\nA: The answer is", "gold": "55", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_17", "prompt": "Q: What is 16 + 44?\nA: The answer is", "gold": "60", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_18", "prompt": "Q: What is 37 + 48?\nA: The answer is", "gold": "85", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_19", "prompt": "Q: What is 43 + 21?\nA: The answer is", "gold": "64", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_20", "prompt": "Q: What is 20 + 24?\nA: The answer is", "gold": "44", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_21", "prompt": "Q: What is 15 + 23?\nA: The answer is", "gold": "38", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_22", "prompt": "Q: What is 32 + 31?\nA: The answer is", "gold": "63", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_23", "prompt": "Q: What is 12 + 40?\nA: The answer is", "gold": "52", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_24", "prompt": "Q: What is 32 + 12?\nA: The answer is", "gold": "44", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_25", "prompt": "Q: What is 43 + 37?\nA: The answer is", "gold": "80", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_26", "prompt": "Q: What is 11 + 11?\nA: The answer is", "gold": "22", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_27", "prompt": "Q: What is 21 + 48?\nA: The answer is", "gold": "69", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_28", "prompt": "Q: What is 22 + 29?\nA: The answer is", "gold": "51", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_29", "prompt": "Q: What is 17 + 37?\nA: The answer is", "gold": "54", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_30", "prompt": "Q: What is 17 + 47?\nA: The answer is", "gold": "64", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_31", "prompt": "Q: What is 22 + 35?\nA: The answer is", "gold": "57", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_32", "prompt": "Q: What is 25 + 44?\nA: The answer is", "gold": "69", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_33", "prompt": "Q: What is 49 + 32?\nA: The answer is", "gold": "81", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_34", "prompt": "Q: What is 13 + 25?\nA: The answer is", "gold": "38", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_35", "prompt": "Q: What is 18 + 42?\nA: The answer is", "gold": "60", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_36", "prompt": "Q: What is 24 + 46?\nA: The answer is", "gold": "70", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_37", "prompt": "Q: What is 22 + 27?\nA: The answer is", "gold": "49", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_38", "prompt": "Q: What is 48 + 38?\nA: The answer is", "gold": "86", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_39", "prompt": "Q: What is 44 + 19?\nA: The answer is", "gold": "63", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
