@@ -6,3 +6,32 @@
 [15:08:07]   math                   acc=1.0 nll=6.3881
 [15:08:12]   formal_logic           acc=0.95 nll=0.5409
 [15:08:19]   grammar                acc=0.95 nll=0.4790
+[15:08:25]   translation            acc=0.825 nll=0.2447
+[15:08:31]   reading_comprehension  acc=0.8 nll=0.3031
+[15:08:48]   history_facts          acc=0.9 nll=2.5416
+[15:08:53]   philosophy             acc=0.875 nll=0.3519
+[15:09:25]   science_facts          acc=0.925 nll=2.1792
+[15:09:31]   commonsense            acc=1.0 nll=0.0410
+[15:09:55]   problem_solving        acc=1.0 nll=8.8886
+[15:09:55]   creative_writing       acc=None nll=2.9252
+[15:10:07]   summarization          acc=0.875 nll=0.2506
+[15:10:16]   spatial_pattern        acc=0.525 nll=1.0137
+[15:10:21]   ethics                 acc=1.0 nll=0.0836
+[15:10:21] capture
+[15:12:22] A: overlap
+[15:12:22]   most entangled ['reading_comprehension', 'spatial_pattern', np.float64(0.8439), np.float64(0.7299)]; least ['creative_writing', 'ethics', np.float64(0.3356), np.float64(0.2017)]
+[15:12:22] B: allocation
+[15:12:22]   dead=0.319 excl=0.195 shared=0.444 core=0.042
+[15:12:23] C: stress to 70%
+[15:15:42]   step 0/700 frac=0.000 worst=coding:1.00 el=199s
+[15:18:34]   step 20/700 frac=0.020 worst=ethics:1.86 el=371s
+[15:21:28]   step 40/700 frac=0.040 worst=ethics:1.74 el=545s
+[15:24:23]   step 60/700 frac=0.060 worst=ethics:1.57 el=720s
+[15:30:16]   step 70/700 frac=0.070 worst=ethics:2.03 el=1073s
+[15:31:42]   step 80/700 frac=0.080 worst=ethics:1.81 el=1160s
+[15:34:38]   step 100/700 frac=0.100 worst=ethics:2.34 el=1335s
+[15:37:32]   step 120/700 frac=0.120 worst=ethics:2.96 el=1509s
+[15:45:22]   step 140/700 frac=0.140 worst=ethics:3.19 el=1980s
+[15:48:18]   step 160/700 frac=0.160 worst=ethics:3.31 el=2155s
+[15:51:11]   step 180/700 frac=0.180 worst=ethics:2.47 el=2328s
+[15:54:06]   step 200/700 frac=0.200 worst=ethics:2.95 el=2503s

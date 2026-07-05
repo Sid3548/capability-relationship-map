@@ -55,6 +55,16 @@ BLOCK = f"""<!--RESUME_START-->
 </table>
 <p class="muted">Verify against disk: <code>git -C C:/Users/user/capability-relationship-map log --oneline</code> and <code>ls results/comprehensive_*/</code> show the true latest state (this snapshot may lag).</p>
 
+<h3>Estimated time (single GPU, sequential) — as of {STAMP}</h3>
+<table>
+<tr><th>Model</th><th>est. compute</th><th>ETA</th></tr>
+<tr><td>Qwen2.5-0.5B</td><td class="good">done (~1.5h)</td><td class="good">✅ complete</td></tr>
+<tr><td>Qwen2.5-3B (running)</td><td>C ~2.5h + D ~3h ≈ 5h</td><td>~20:30 (8:30pm) today</td></tr>
+<tr><td>Phi-4-mini</td><td>~5h</td><td>~01:30 (after 3B)</td></tr>
+<tr><td>gpt-oss-20b (MoE)</td><td>adapter ~2-4h + run ~10-16h</td><td>next day</td></tr>
+</table>
+<p class="muted">Dense set (through Phi) ~9-11h from ~16:00; full set incl. gpt-oss ~24-36h. Speed lever: drop max_fraction 0.70→0.50 + coarser gen checkpoints for Phi/gpt-oss (model broadly broken by ~35% anyway) ≈ halves their runtime.</p>
+
 <h3>File map</h3>
 <ul>
 <li><strong>Repo:</strong> <code>C:\\Users\\user\\capability-relationship-map</code> (git) · <strong>venv:</strong> <code>.venv</code></li>
