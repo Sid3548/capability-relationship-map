@@ -230,14 +230,32 @@ def main():
         return out
 
     rows_c = []
-    gen_every = max(1, int(round(0.05 / 0.001)))  # ~every 5%
-    fail_frac = {c: None for c in CAPS}  # global-control failure fraction (retention<0.5 or nll_ratio>2)
+    # Design (stated in output): the GLOBAL least-used-first control is the
+    # primary fragility sweep -> NLL at every 0.1% step + gen checkpoints. The
+    # RANDOM control (5 seeds) is a reference band -> NLL at coarser 1% steps
+    # (its curve is smooth; 0.1% resolution unnecessary and would ~6x the run).
+    MAXNEW_SWEEP = 128
+    gen_every = max(1, int(round(0.07 / 0.001)))   # global gen checkpoints ~every 7%
+    rand_every = max(1, int(round(0.01 / 0.001)))  # random-control NLL ~every 1%
+    fail_frac = {c: None for c in CAPS}
     t0 = time.time()
+
+    def acc_all_sweep(mask):
+        handles = attach_ablation_hooks_from_mask(bundle, mask, "mean", calib)
+        try:
+            out = {}
+            for c in CAPS:
+                a, _ = gen_accuracy(bundle, bat[c], eval_types[c], MAXNEW_SWEEP, exec_to, tol)
+                out[c] = a
+        finally:
+            remove_ablation_hooks(handles)
+        return out
+
     for st in range(0, n_steps + 1):
         cum = st * step
         frac = cum / total
         do_gen = (st % gen_every == 0) or (st == n_steps)
-        # global control
+        # global control (primary)
         gmask = mask_from_flat(order_global[:cum]) if cum > 0 else np.zeros((L, I), bool)
         gn = nll_all(gmask)
         row = {"step": st, "frac": frac, "control": "global", "seed": -1}
@@ -245,29 +263,25 @@ def main():
             row[f"nll_{c}"] = gn[c]
             row[f"nllratio_{c}"] = gn[c] / base_nll[c]
         if do_gen:
-            ga = acc_all(gmask)
+            ga = acc_all_sweep(gmask)
             for c in CAPS:
                 row[f"acc_{c}"] = ga[c]
                 if base_acc[c]:
                     row[f"ret_{c}"] = (ga[c] / base_acc[c]) if ga[c] is not None else None
-        # record first failure fraction per cap (global control) on NLL ratio (available every step)
         for c in CAPS:
             if fail_frac[c] is None and gn[c] / base_nll[c] > 2.0:
                 fail_frac[c] = frac
         rows_c.append(row)
-        # random control
-        for s in seeds:
-            rmask = mask_from_flat(rng_orders[s][:cum]) if cum > 0 else np.zeros((L, I), bool)
-            rn = nll_all(rmask)
-            rr = {"step": st, "frac": frac, "control": "random", "seed": s}
-            for c in CAPS:
-                rr[f"nll_{c}"] = rn[c]
-                rr[f"nllratio_{c}"] = rn[c] / base_nll[c]
-            if do_gen:
-                ra = acc_all(rmask)
+        # random control reference band (coarser)
+        if st % rand_every == 0 or st == n_steps:
+            for s in seeds:
+                rmask = mask_from_flat(rng_orders[s][:cum]) if cum > 0 else np.zeros((L, I), bool)
+                rn = nll_all(rmask)
+                rr = {"step": st, "frac": frac, "control": "random", "seed": s}
                 for c in CAPS:
-                    rr[f"acc_{c}"] = ra[c]
-            rows_c.append(rr)
+                    rr[f"nll_{c}"] = rn[c]
+                    rr[f"nllratio_{c}"] = rn[c] / base_nll[c]
+                rows_c.append(rr)
         if st % 20 == 0 or do_gen:
             worst = max(CAPS, key=lambda c: gn[c] / base_nll[c])
             log(f"  step {st}/{n_steps} frac={frac:.3f} worst-NLLratio={worst}:{gn[worst]/base_nll[worst]:.2f} "
@@ -339,7 +353,7 @@ def main():
         for cond, mfn, dacc, dloss in [("env", env_mask, dacc_env, dloss_env),
                                        ("high", high_mask, dacc_hi, dloss_hi)]:
             m = mfn(tgt)
-            na = nll_all(m); aa = acc_all(m)
+            na = nll_all(m); aa = acc_all_sweep(m)
             for j, col in enumerate(CAPS):
                 dloss[i, j] = na[col] - base_nll[col]
                 if base_acc[col] is not None and aa[col] is not None:

@@ -1,0 +1,38 @@
+{
+  "max_fraction": 0.7,
+  "failure_def": "nll_ratio>2 (global control)",
+  "failure_fraction_pct": {
+    "coding": 0.40792043585526316,
+    "math": null,
+    "formal_logic": 0.45502672697368424,
+    "grammar": 0.10323293585526316,
+    "translation": 0.19644325657894737,
+    "reading_comprehension": 0.5251850328947368,
+    "history_facts": 0.5472347861842105,
+    "philosophy": 0.3096988075657895,
+    "science_facts": null,
+    "commonsense": 0.11826685855263158,
+    "problem_solving": null,
+    "creative_writing": 0.5642732319078947,
+    "summarization": 0.36983449835526316,
+    "spatial_pattern": 0.533203125,
+    "ethics": 0.42596114309210525
+  },
+  "fragility_ranking_most_to_least_fragile": [
+    "grammar",
+    "commonsense",
+    "translation",
+    "philosophy",
+    "summarization",
+    "coding",
+    "ethics",
+    "formal_logic",
+    "reading_comprehension",
+    "spatial_pattern",
+    "history_facts",
+    "creative_writing",
+    "math",
+    "science_facts",
+    "problem_solving"
+  ]
+}

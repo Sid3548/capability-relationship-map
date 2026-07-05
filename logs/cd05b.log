@@ -1,0 +1,36 @@
+[12:23:21] loading Qwen/Qwen2.5-0.5B
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 14143.09it/s]
+[12:23:25] layers=24 intermediate=4864 total=116736
+[12:23:25] computing calibration means
+[12:23:57] C: global stress sweep to 70%
+[12:26:02]   step 0/698 frac=0.000 worst=coding:1.00 el=125s
+[12:27:00]   step 20/698 frac=0.020 worst=commonsense:1.43 el=183s
+[12:28:04]   step 40/698 frac=0.040 worst=commonsense:1.71 el=247s
+[12:29:04]   step 60/698 frac=0.060 worst=grammar:1.46 el=307s
+[12:31:34]   step 70/698 frac=0.070 worst=grammar:1.76 el=457s
+[12:32:03]   step 80/698 frac=0.080 worst=commonsense:1.76 el=486s
+[12:33:00]   step 100/698 frac=0.100 worst=commonsense:1.88 el=543s
+[12:34:05]   step 120/698 frac=0.120 worst=commonsense:1.89 el=608s
+[12:37:37]   step 140/698 frac=0.140 worst=grammar:1.78 el=820s
+[12:38:35]   step 160/698 frac=0.160 worst=grammar:2.41 el=878s
+[12:39:37]   step 180/698 frac=0.180 worst=grammar:2.35 el=940s
+[12:40:42]   step 200/698 frac=0.200 worst=translation:2.08 el=1005s
+[12:43:27]   step 210/698 frac=0.210 worst=grammar:2.44 el=1170s
+[12:43:56]   step 220/698 frac=0.220 worst=grammar:2.38 el=1199s
+[12:44:53]   step 240/698 frac=0.241 worst=translation:2.93 el=1257s
+[12:45:56]   step 260/698 frac=0.261 worst=translation:3.06 el=1319s
+[12:49:14]   step 280/698 frac=0.281 worst=translation:3.25 el=1517s
+[12:50:13]   step 300/698 frac=0.301 worst=translation:3.64 el=1576s
+[12:51:10]   step 320/698 frac=0.321 worst=translation:4.20 el=1634s
+[12:52:17]   step 340/698 frac=0.341 worst=translation:4.73 el=1700s
+[12:55:32]   step 350/698 frac=0.351 worst=translation:5.14 el=1895s
+[12:56:01]   step 360/698 frac=0.361 worst=translation:5.38 el=1924s
+[12:56:58]   step 380/698 frac=0.381 worst=translation:6.62 el=1981s
+[12:58:02]   step 400/698 frac=0.401 worst=translation:7.18 el=2046s
+[13:04:20]   step 420/698 frac=0.421 worst=translation:8.26 el=2423s
+[13:05:20]   step 440/698 frac=0.441 worst=commonsense:8.26 el=2483s
+[13:06:19]   step 460/698 frac=0.461 worst=translation:9.25 el=2542s
+[13:07:33]   step 480/698 frac=0.481 worst=translation:9.75 el=2616s
+[13:13:26]   step 490/698 frac=0.491 worst=translation:9.63 el=2969s
+[13:13:56]   step 500/698 frac=0.501 worst=translation:9.79 el=2999s

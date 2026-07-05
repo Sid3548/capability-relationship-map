@@ -1,0 +1,22 @@
+[12:15:11] loading Qwen/Qwen2.5-0.5B
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|##########| 290/290 [00:00<00:00, 15263.50it/s]
+[12:15:14] layers=24 intermediate=4864 total_mlp_neurons=116736
+[12:15:14] baselines: gen accuracy + batched NLL for all 15
+[12:15:30]   coding                 acc=0.925 nll=1.1379
+[12:15:39]   math                   acc=0.975 nll=5.2936
+[12:15:42]   formal_logic           acc=0.65 nll=1.2684
+[12:15:49]   grammar                acc=0.95 nll=0.6279
+[12:15:53]   translation            acc=0.8 nll=0.5862
+[12:15:56]   reading_comprehension  acc=0.45 nll=1.2127
+[12:16:16]   history_facts          acc=0.9 nll=3.5668
+[12:16:22]   philosophy             acc=0.825 nll=0.8486
+[12:16:41]   science_facts          acc=0.975 nll=3.8082
+[12:16:43]   commonsense            acc=0.925 nll=0.3388
+[12:16:56]   problem_solving        acc=0.975 nll=7.4080
+[12:16:56]   creative_writing       acc=None nll=3.1529
+[12:17:02]   summarization          acc=0.875 nll=0.6362
+[12:17:08]   spatial_pattern        acc=0.1 nll=1.6020
+[12:17:10]   ethics                 acc=0.35 nll=1.1431
+[12:17:10] capturing per-cap aggregates
+[12:18:13] Deliverable A: overlap matrix
