@@ -1,1 +1,2 @@
-Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s]
+Fetching 18 files:   0%|          | 0/18 [00:00<?, ?it/s]C:\Users\user\capability-relationship-map\.venv\Lib\site-packages\huggingface_hub\file_download.py:749: UserWarning: Not enough free disk space to download the file. The expected file size is: 13761.30 MB. The target location C:\Users\user\.cache\huggingface\hub\models--openai--gpt-oss-20b\blobs only has 7184.97 MB free disk space.
+  warnings.warn(

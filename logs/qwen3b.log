@@ -65,3 +65,8 @@
 [17:39:08]   step 680/700 frac=0.680 worst=commonsense:68.47 el=8805s
 [17:45:59]   step 700/700 frac=0.699 worst=commonsense:81.13 el=9217s
 [17:45:59]   fragility: ['ethics', 'grammar', 'commonsense', 'translation', 'reading_comprehension', 'philosophy', 'formal_logic', 'spatial_pattern', 'summarization', 'history_facts', 'coding', 'science_facts', 'math', 'problem_solving', 'creative_writing']
+[17:46:00] D: interlink
+[18:04:13]   coding done (1093s)
+[18:18:56]   math done (1977s)
+[18:28:39]   formal_logic done (2560s)
+[18:38:29]   grammar done (3149s)

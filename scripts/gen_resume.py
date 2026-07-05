@@ -30,7 +30,7 @@ RUN A DENSE MODEL (resume-safe; reuses baselines.json/aggregates if present):
 Resume just C+D for 0.5B (aggregates already captured):
   .venv/Scripts/python.exe -u -m scripts.run_cd Qwen/Qwen2.5-0.5B results/comprehensive_qwen0.5b 0.70
 
-ORDER (current):  1) Qwen/Qwen2.5-0.5B [tag qwen0.5b]  2) Qwen/Qwen2.5-3B [qwen3b]  3) microsoft/Phi-4-mini-instruct [phi4mini]  4) openai/gpt-oss-20b [gptoss20b] LAST.
+PLAN (2026-07-05): TODAY = QWEN ONLY (0.5B done; 3B finishing = last run of the day, then STOP). DEFERRED to a later session: Phi-4-mini-instruct [phi4mini] (dense, already downloaded) and an MoE model gpt-oss-20b [gptoss20b] (needs HF token + free disk + a MoE hook adapter). To continue later, run Phi then gpt-oss with run_full / the MoE adapter.
 gpt-oss is MoE -> needs an adapter first: neuron = per-expert silu(gate)*up channel (see modeling_gpt_oss.py GptOssExperts.forward line ~114 `gated_output`); capture+ablate by monkeypatching GptOssExperts.forward (experts are fused tensors, not modules; routing-aware: a neuron only fires when its expert is in the top-4). ~24x32x2880 ~= 2.2M neurons; run A+B first (fast, one capture pass), then C+D (slow).
 
 AFTER each run: read the JSON outputs (A_overlap.json, B_allocation.json, C_stress.json, C_stress_rows.jsonl, D_interlink.json) and APPEND a new HTML section with the overlap matrix, allocation table, fragility ranking, and interlink matrices, verbatim. Then run scripts/gen_resume.py to update status."""
@@ -49,9 +49,9 @@ BLOCK = f"""<!--RESUME_START-->
 <table>
 <tr><th>Model</th><th>tag / results dir</th><th>A overlap</th><th>B alloc</th><th>C fragility</th><th>D interlink</th><th>HTML sec</th></tr>
 <tr><td>Qwen2.5-0.5B</td><td class="muted">qwen0.5b</td><td class="good">done</td><td class="good">done</td><td class="good">done</td><td class="good">done</td><td>13 ✅</td></tr>
-<tr><td>Qwen2.5-3B</td><td class="muted">qwen3b</td><td colspan="4" class="good">RUNNING now (run_full, results/comprehensive_qwen3b)</td><td>14</td></tr>
-<tr><td>Phi-4-mini-instruct</td><td class="muted">phi4mini</td><td colspan="4" class="muted">downloading, queued (dense, Western)</td><td>15</td></tr>
-<tr><td>gpt-oss-20b (MoE)</td><td class="muted">gptoss20b</td><td colspan="4" class="muted">downloading, LAST — needs MoE adapter</td><td>16</td></tr>
+<tr><td>Qwen2.5-3B</td><td class="muted">qwen3b</td><td colspan="4" class="good">RUNNING — finishing today (last model for today)</td><td>14</td></tr>
+<tr><td>Phi-4-mini-instruct</td><td class="muted">phi4mini</td><td colspan="4" class="muted">DEFERRED (downloaded, ready) — not part of today's scope</td><td>15</td></tr>
+<tr><td>gpt-oss-20b (MoE)</td><td class="muted">gptoss20b</td><td colspan="4" class="muted">DEFERRED to a later session — the MoE model; needs HF token + disk + MoE adapter</td><td>16</td></tr>
 </table>
 <p class="muted">Verify against disk: <code>git -C capability-relationship-map log --oneline</code> and <code>ls results/comprehensive_*/</code> show the true latest state (this snapshot may lag).</p>
 
