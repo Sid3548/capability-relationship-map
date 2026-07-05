@@ -1,0 +1,5 @@
+{"task": "math", "id": "math_01", "prompt": "Q: What is 47 + 58?\nA: The answer is", "gold": "105", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_02", "prompt": "Q: What is 123 - 47?\nA: The answer is", "gold": "76", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_03", "prompt": "Q: What is 12 times 8?\nA: The answer is", "gold": "96", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_04", "prompt": "Q: What is 144 divided by 12?\nA: The answer is", "gold": "12", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}
+{"task": "math", "id": "math_05", "prompt": "Q: If a train travels 60 miles per hour for 3 hours, how many miles does it travel?\nA: The answer is", "gold": "180", "eval_type": "numeric", "metadata": {"tolerance": 0.0}}

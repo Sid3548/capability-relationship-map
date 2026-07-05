@@ -1,0 +1,9 @@
+# Model configuration. Only Qwen2.5-0.5B in scope for this run, but
+# structured to allow swapping to Llama/Gemma later without code changes
+# (arch adapter in src/models.py reads dims from config at runtime).
+model_name: "Qwen/Qwen2.5-0.5B"
+dtype: "bfloat16"
+device: "cuda"
+trust_remote_code: false
+cache_dir: "models/hf_cache"
+seed: 1234

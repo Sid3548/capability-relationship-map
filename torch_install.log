@@ -1,0 +1,36 @@
+Looking in indexes: https://download.pytorch.org/whl/cu124
+Collecting torch
+  Downloading torch-2.6.0%2Bcu124-cp312-cp312-win_amd64.whl.metadata (28 kB)
+Collecting filelock (from torch)
+  Downloading filelock-3.29.0-py3-none-any.whl.metadata (2.0 kB)
+Collecting typing-extensions>=4.10.0 (from torch)
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting networkx (from torch)
+  Using cached networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec (from torch)
+  Downloading fsspec-2026.4.0-py3-none-any.whl.metadata (10 kB)
+Collecting setuptools (from torch)
+  Downloading setuptools-70.2.0-py3-none-any.whl.metadata (5.8 kB)
+Collecting sympy==1.13.1 (from torch)
+  Using cached sympy-1.13.1-py3-none-any.whl.metadata (12 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy==1.13.1->torch)
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+  Downloading markupsafe-3.0.3-cp312-cp312-win_amd64.whl.metadata (2.8 kB)
+Downloading torch-2.6.0%2Bcu124-cp312-cp312-win_amd64.whl (2532.3 MB)
+   ---------------------------------------- 2.5/2.5 GB 6.0 MB/s  0:05:17
+Using cached sympy-1.13.1-py3-none-any.whl (6.2 MB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading filelock-3.29.0-py3-none-any.whl (39 kB)
+Downloading fsspec-2026.4.0-py3-none-any.whl (203 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.3-cp312-cp312-win_amd64.whl (15 kB)
+Using cached networkx-3.6.1-py3-none-any.whl (2.1 MB)
+Downloading setuptools-70.2.0-py3-none-any.whl (930 kB)
+   ---------------------------------------- 930.8/930.8 kB 6.1 MB/s  0:00:00
+Installing collected packages: mpmath, typing-extensions, sympy, setuptools, networkx, MarkupSafe, fsspec, filelock, jinja2, torch
+
+Successfully installed MarkupSafe-3.0.3 filelock-3.29.0 fsspec-2026.4.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.6.1 setuptools-70.2.0 sympy-1.13.1 torch-2.6.0+cu124 typing-extensions-4.15.0

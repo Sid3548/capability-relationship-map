@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+models/
+*.parquet
+hf_cache/
+.hf_cache/
+results/*.png
+results/*.parquet
+results/*.npz
+results/*.safetensors
+*.egg-info/
+.ipynb_checkpoints/

@@ -1,0 +1,15 @@
+# Sweep configuration for the removal-envelope smoke run.
+target_task: "coding"          # task whose score ranks neurons for removal
+other_tasks: ["math"]          # tasks we watch for collateral damage
+step_fraction: 0.001           # 0.1% of total neurons per step (NOT 1%, NOT 10%)
+max_fraction: 0.10             # stop sweep at 10% removed for the smoke run (wall-clock budget)
+loss_eval_every_steps: 1       # smooth NLL metric: every 0.1% step (cheap)
+gen_eval_every_steps: 25       # generation/accuracy metric: coarser (~2.5%), expensive
+controls:
+  - "low"        # removal envelope: weakest-by-score-first (excluding core)
+  - "random"     # random removal, same per-layer neuron counts, multiple seeds
+  - "high"       # highest-activation-first, expected to cliff earliest
+random_seeds: [0, 1, 2, 3, 4]   # >=5 seeds for smoke per plan
+ablation_mode: "mean"           # mean-ablate default; "zero" available as harsh bound
+score_stat: "mean_abs"          # or "max_abs" -- both computed in scoring stage
+core_percentile: 0.99           # neurons with rank >= this on BOTH tasks are "core", excluded from removal

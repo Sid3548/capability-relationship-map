@@ -1,0 +1,18 @@
+{
+  "git_hash": "unknown",
+  "model_name": "Qwen/Qwen2.5-0.5B",
+  "dtype": "bfloat16",
+  "device": "cuda",
+  "seed": 1234,
+  "num_layers": 24,
+  "intermediate_size": 4864,
+  "total_mlp_neurons": 116736,
+  "target_task": "coding",
+  "ablation_mode": "mean",
+  "score_stat": "mean_abs",
+  "core_neuron_count": 255,
+  "baseline_coding_pass_at_1": 1.0,
+  "baseline_math_accuracy": 1.0,
+  "baseline_coding_nll": 0.7871017515659332,
+  "baseline_math_nll": 4.605736637115479
+}
