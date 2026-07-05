@@ -2,3 +2,7 @@
 Loading weights:   0%|          | 0/434 [00:00<?, ?it/s]Loading weights: 100%|##########| 434/434 [00:00<00:00, 15500.99it/s]
 [15:07:28] layers=36 intermediate=11008 total_mlp_neurons=396288 0.1%=396
 [15:07:28] baselines
+[15:07:54]   coding                 acc=0.9 nll=1.0958
+[15:08:07]   math                   acc=1.0 nll=6.3881
+[15:08:12]   formal_logic           acc=0.95 nll=0.5409
+[15:08:19]   grammar                acc=0.95 nll=0.4790

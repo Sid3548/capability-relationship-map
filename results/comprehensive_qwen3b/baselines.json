@@ -1,0 +1,92 @@
+{
+  "coding": {
+    "acc": 0.9,
+    "parse_fail": 0.05,
+    "nll": 1.095841073989868,
+    "eval_type": "exec"
+  },
+  "math": {
+    "acc": 1.0,
+    "parse_fail": 0.0,
+    "nll": 6.3880537211894985,
+    "eval_type": "numeric"
+  },
+  "formal_logic": {
+    "acc": 0.95,
+    "parse_fail": 0.0,
+    "nll": 0.5408771496266127,
+    "eval_type": "mcq"
+  },
+  "grammar": {
+    "acc": 0.95,
+    "parse_fail": 0.0,
+    "nll": 0.4789666215423495,
+    "eval_type": "mcq"
+  },
+  "translation": {
+    "acc": 0.825,
+    "parse_fail": 0.0,
+    "nll": 0.24469104483723642,
+    "eval_type": "tokenf1"
+  },
+  "reading_comprehension": {
+    "acc": 0.8,
+    "parse_fail": 0.0,
+    "nll": 0.30311070224270226,
+    "eval_type": "mcq"
+  },
+  "history_facts": {
+    "acc": 0.9,
+    "parse_fail": 0.0,
+    "nll": 2.5415900606662034,
+    "eval_type": "factual"
+  },
+  "philosophy": {
+    "acc": 0.875,
+    "parse_fail": 0.1,
+    "nll": 0.35187795232050123,
+    "eval_type": "mcq"
+  },
+  "science_facts": {
+    "acc": 0.925,
+    "parse_fail": 0.0,
+    "nll": 2.1791817650198935,
+    "eval_type": "factual"
+  },
+  "commonsense": {
+    "acc": 1.0,
+    "parse_fail": 0.0,
+    "nll": 0.040970079880207774,
+    "eval_type": "mcq"
+  },
+  "problem_solving": {
+    "acc": 1.0,
+    "parse_fail": 0.0,
+    "nll": 8.888645184040069,
+    "eval_type": "numeric"
+  },
+  "creative_writing": {
+    "acc": null,
+    "parse_fail": null,
+    "nll": 2.925235465168953,
+    "eval_type": "nll_only"
+  },
+  "summarization": {
+    "acc": 0.875,
+    "parse_fail": 0.125,
+    "nll": 0.25062669068574905,
+    "eval_type": "mcq"
+  },
+  "spatial_pattern": {
+    "acc": 0.525,
+    "parse_fail": 0.0,
+    "nll": 1.013722212985158,
+    "eval_type": "mcq"
+  },
+  "ethics": {
+    "acc": 1.0,
+    "parse_fail": 0.0,
+    "nll": 0.08364905628841371,
+    "eval_type": "mcq"
+  }
+}

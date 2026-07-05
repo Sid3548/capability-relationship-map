@@ -1,0 +1,51 @@
+{
+  "total_neurons": 396288,
+  "threshold": 0.8,
+  "buckets": {
+    "dead": 126259,
+    "exclusive": 77382,
+    "shared": 176044,
+    "core": 16603
+  },
+  "buckets_pct": {
+    "dead": 0.31860414647932817,
+    "exclusive": 0.1952670784883721,
+    "shared": 0.4442324773901809,
+    "core": 0.041896297642118864
+  },
+  "per_cap_exclusive_count": {
+    "coding": 9707,
+    "math": 5531,
+    "formal_logic": 2284,
+    "grammar": 1527,
+    "translation": 10954,
+    "reading_comprehension": 619,
+    "history_facts": 11145,
+    "philosophy": 2603,
+    "science_facts": 8226,
+    "commonsense": 561,
+    "problem_solving": 6003,
+    "creative_writing": 13093,
+    "summarization": 2364,
+    "spatial_pattern": 1214,
+    "ethics": 1551
+  },
+  "active_count_histogram": {
+    "0": 126259,
+    "1": 77382,
+    "2": 48655,
+    "3": 30291,
+    "4": 19359,
+    "5": 13945,
+    "6": 11700,
+    "7": 10937,
+    "8": 12179,
+    "9": 10422,
+    "10": 7843,
+    "11": 6010,
+    "12": 4703,
+    "13": 4004,
+    "14": 3648,
+    "15": 8951
+  }
+}
