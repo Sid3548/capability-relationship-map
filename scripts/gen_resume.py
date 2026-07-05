@@ -49,7 +49,7 @@ BLOCK = f"""<!--RESUME_START-->
 <table>
 <tr><th>Model</th><th>tag / results dir</th><th>A overlap</th><th>B alloc</th><th>C fragility</th><th>D interlink</th><th>HTML sec</th></tr>
 <tr><td>Qwen2.5-0.5B</td><td class="muted">qwen0.5b</td><td class="good">done</td><td class="good">done</td><td class="good">done</td><td class="good">done</td><td>13 ✅</td></tr>
-<tr><td>Qwen2.5-3B</td><td class="muted">qwen3b</td><td colspan="4" class="good">RUNNING — finishing today (last model for today)</td><td>14</td></tr>
+<tr><td>Qwen2.5-3B</td><td class="muted">qwen3b</td><td class="good">done</td><td class="good">done</td><td class="good">done</td><td class="good">done</td><td>14 ✅</td></tr>
 <tr><td>Phi-4-mini-instruct</td><td class="muted">phi4mini</td><td colspan="4" class="muted">DEFERRED (downloaded, ready) — not part of today's scope</td><td>15</td></tr>
 <tr><td>gpt-oss-20b (MoE)</td><td class="muted">gptoss20b</td><td colspan="4" class="muted">DEFERRED to a later session — the MoE model; needs HF token + disk + MoE adapter</td><td>16</td></tr>
 </table>
