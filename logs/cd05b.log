@@ -34,3 +34,23 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
 [13:07:33]   step 480/698 frac=0.481 worst=translation:9.75 el=2616s
 [13:13:26]   step 490/698 frac=0.491 worst=translation:9.63 el=2969s
 [13:13:56]   step 500/698 frac=0.501 worst=translation:9.79 el=2999s
+[13:15:14]   step 520/698 frac=0.521 worst=translation:10.80 el=3077s
+[13:16:27]   step 540/698 frac=0.541 worst=commonsense:12.10 el=3150s
+[13:20:50]   step 560/698 frac=0.561 worst=translation:10.91 el=3413s
+[13:21:54]   step 580/698 frac=0.581 worst=translation:11.93 el=3477s
+[13:22:56]   step 600/698 frac=0.601 worst=translation:12.48 el=3539s
+[13:23:55]   step 620/698 frac=0.621 worst=translation:12.92 el=3598s
+[13:28:43]   step 630/698 frac=0.631 worst=translation:13.21 el=3886s
+[13:29:12]   step 640/698 frac=0.641 worst=translation:13.32 el=3915s
+[13:30:12]   step 660/698 frac=0.661 worst=translation:14.86 el=3975s
+[13:31:10]   step 680/698 frac=0.682 worst=translation:15.56 el=4033s
+[13:36:46]   step 698/698 frac=0.700 worst=translation:15.44 el=4369s
+[13:36:46]   fragility (most fragile first): ['grammar', 'commonsense', 'translation', 'philosophy', 'summarization', 'coding', 'ethics', 'formal_logic', 'reading_comprehension', 'spatial_pattern', 'history_facts', 'creative_writing', 'math', 'science_facts', 'problem_solving']
+[13:36:46] D: 15x15 interlink
+[13:43:39]   target coding done (413s)
+[13:48:30]   target math done (704s)
+[13:54:59]   target formal_logic done (1093s)
+[14:01:01]   target grammar done (1455s)
+[14:07:32]   target translation done (1846s)
+[14:13:02]   target reading_comprehension done (2176s)
+[14:17:43]   target history_facts done (2457s)
