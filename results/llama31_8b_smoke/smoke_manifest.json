@@ -1,0 +1,19 @@
+{
+  "model": "Meta-Llama-3.1-8B",
+  "precision": "int8(bnb)",
+  "seed": 1234,
+  "layers": 32,
+  "intermediate": 14336,
+  "total_mlp_neurons": 458752,
+  "step_fraction": 0.001,
+  "max_fraction": 0.05,
+  "core_percentile": 0.99,
+  "core_neurons": 1073,
+  "baseline": {
+    "code_nll": 0.9330281727015972,
+    "code_pass1": 0.6875,
+    "math_nll": 12.189134438832602,
+    "math_acc": 1.0
+  },
+  "sanity_gen": "    return a + b\n\ndef subtract(a, b):\n    # returns difference\n    return a - b\n\ndef"
+}

@@ -1,0 +1,63 @@
+[00:19:16] loading tokenizer + model (int8)
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<02:29,  1.95it/s]Loading weights:   1%|          | 2/291 [00:01<02:26,  1.97it/s]Loading weights:   1%|1         | 4/291 [00:01<01:03,  4.51it/s]Loading weights:   2%|2         | 6/291 [00:01<00:44,  6.37it/s]Loading weights:   4%|4         | 13/291 [00:01<00:16, 16.45it/s]Loading weights:   5%|5         | 16/291 [00:01<00:16, 16.75it/s]Loading weights:   8%|7         | 22/291 [00:01<00:11, 23.36it/s]Loading weights:   9%|8         | 25/291 [00:01<00:12, 22.08it/s]Loading weights:  11%|#         | 31/291 [00:02<00:09, 27.84it/s]Loading weights:  12%|#2        | 35/291 [00:02<00:09, 26.53it/s]Loading weights:  14%|#3        | 40/291 [00:02<00:07, 31.40it/s]Loading weights:  15%|#5        | 44/291 [00:02<00:07, 32.93it/s]Loading weights:  17%|#7        | 50/291 [00:02<00:06, 36.18it/s]Loading weights:  20%|#9        | 58/291 [00:02<00:05, 42.09it/s]Loading weights:  22%|##1       | 63/291 [00:02<00:05, 42.29it/s]Loading weights:  23%|##3       | 68/291 [00:02<00:05, 43.33it/s]Loading weights:  26%|##6       | 76/291 [00:03<00:04, 48.75it/s]Loading weights:  28%|##7       | 81/291 [00:03<00:04, 46.65it/s]Loading weights:  30%|##9       | 86/291 [00:03<00:04, 45.15it/s]Loading weights:  32%|###2      | 94/291 [00:03<00:04, 46.97it/s]Loading weights:  34%|###4      | 99/291 [00:03<00:04, 40.34it/s]Loading weights:  36%|###5      | 104/291 [00:03<00:05, 36.15it/s]Loading weights:  37%|###7      | 108/291 [00:03<00:04, 36.72it/s]Loading weights:  39%|###8      | 113/291 [00:04<00:05, 34.48it/s]Loading weights:  40%|####      | 117/291 [00:04<00:04, 35.21it/s]Loading weights:  42%|####1     | 121/291 [00:04<00:04, 36.30it/s]Loading weights:  43%|####2     | 125/291 [00:04<00:05, 33.08it/s]Loading weights:  45%|####4     | 130/291 [00:04<00:04, 34.50it/s]Loading weights:  46%|####6     | 134/291 [00:04<00:05, 30.60it/s]Loading weights:  48%|####7     | 139/291 [00:04<00:04, 32.83it/s]Loading weights:  49%|####9     | 143/291 [00:05<00:04, 29.66it/s]Loading weights:  51%|#####     | 148/291 [00:05<00:04, 32.86it/s]Loading weights:  52%|#####2    | 152/291 [00:05<00:04, 30.60it/s]Loading weights:  54%|#####3    | 157/291 [00:05<00:04, 33.49it/s]Loading weights:  55%|#####5    | 161/291 [00:05<00:04, 29.72it/s]Loading weights:  57%|#####7    | 166/291 [00:05<00:03, 32.29it/s]Loading weights:  58%|#####8    | 170/291 [00:05<00:03, 30.63it/s]Loading weights:  60%|######    | 176/291 [00:06<00:03, 34.60it/s]Loading weights:  63%|######3   | 184/291 [00:06<00:02, 42.41it/s]Loading weights:  65%|######4   | 189/291 [00:06<00:02, 43.11it/s]Loading weights:  67%|######6   | 194/291 [00:06<00:02, 43.84it/s]Loading weights:  69%|######9   | 202/291 [00:06<00:01, 49.95it/s]Loading weights:  71%|#######1  | 208/291 [00:06<00:01, 49.47it/s]Loading weights:  73%|#######3  | 213/291 [00:06<00:01, 44.64it/s]Loading weights:  76%|#######5  | 221/291 [00:06<00:01, 50.29it/s]Loading weights:  79%|#######8  | 229/291 [00:07<00:01, 54.05it/s]Loading weights:  81%|########  | 235/291 [00:07<00:01, 50.49it/s]Loading weights:  83%|########2 | 241/291 [00:07<00:01, 45.60it/s]Loading weights:  85%|########5 | 248/291 [00:07<00:00, 46.73it/s]Loading weights:  88%|########7 | 256/291 [00:07<00:00, 50.22it/s]Loading weights:  90%|######### | 262/291 [00:07<00:00, 49.33it/s]Loading weights:  92%|#########1| 267/291 [00:07<00:00, 44.46it/s]Loading weights:  95%|#########4| 275/291 [00:07<00:00, 48.84it/s]Loading weights:  97%|#########7| 283/291 [00:08<00:00, 49.87it/s]Loading weights:  99%|#########9| 289/291 [00:08<00:00, 24.39it/s]Loading weights: 100%|##########| 291/291 [00:08<00:00, 33.26it/s]
+[00:19:29] layers=32 intermediate=14336 total_mlp_neurons=458752
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+[00:19:32] sanity gen: '    return a + b\n\ndef subtract(a, b):\n    # returns difference\n    return a - b\n\ndef'
+[00:23:15] baseline coding nll=0.9330 pass@1=0.688 | math nll=12.1891 acc=1.000
+[00:23:15] capture coding aggregates
+[capture] task=coding activation shape on layer0: (1, 63, 14336) (B,S,intermediate)
+[00:23:19] capture math aggregates
+[00:23:25] calibration means
+[00:23:34] core neurons (rank>=0.99 both) = 1073
+[00:23:35] step_size=459 n_steps=49 (to 5%)
+[00:30:15]   step 0/49 frac=0.000 el=401s
+[00:30:23]   step 1/49 frac=0.001 el=408s
+[00:30:30]   step 2/49 frac=0.002 el=416s
+[00:30:38]   step 3/49 frac=0.003 el=423s
+[00:30:45]   step 4/49 frac=0.004 el=431s
+[00:30:53]   step 5/49 frac=0.005 el=438s
+[00:31:00]   step 6/49 frac=0.006 el=446s
+[00:31:08]   step 7/49 frac=0.007 el=453s
+[00:31:15]   step 8/49 frac=0.008 el=461s
+[00:31:23]   step 9/49 frac=0.009 el=468s
+[00:37:09]   step 10/49 frac=0.010 el=815s
+[00:37:17]   step 11/49 frac=0.011 el=822s
+[00:37:24]   step 12/49 frac=0.012 el=829s
+[00:37:31]   step 13/49 frac=0.013 el=837s
+[00:37:39]   step 14/49 frac=0.014 el=845s
+[00:37:47]   step 15/49 frac=0.015 el=852s
+[00:37:55]   step 16/49 frac=0.016 el=860s
+[00:38:03]   step 17/49 frac=0.017 el=868s
+[00:38:11]   step 18/49 frac=0.018 el=876s
+[00:38:18]   step 19/49 frac=0.019 el=884s
+[00:46:56]   step 20/49 frac=0.020 el=1402s
+[00:47:04]   step 21/49 frac=0.021 el=1409s
+[00:47:11]   step 22/49 frac=0.022 el=1417s
+[00:47:19]   step 23/49 frac=0.023 el=1424s
+[00:47:26]   step 24/49 frac=0.024 el=1432s
+[00:47:34]   step 25/49 frac=0.025 el=1439s
+[00:47:41]   step 26/49 frac=0.026 el=1447s
+[00:47:49]   step 27/49 frac=0.027 el=1455s
+[00:47:57]   step 28/49 frac=0.028 el=1462s
+[00:48:04]   step 29/49 frac=0.029 el=1470s
+[00:57:55]   step 30/49 frac=0.030 el=2061s
+[00:58:03]   step 31/49 frac=0.031 el=2068s
+[00:58:10]   step 32/49 frac=0.032 el=2076s
+[00:58:18]   step 33/49 frac=0.033 el=2083s
+[00:58:25]   step 34/49 frac=0.034 el=2091s
+[00:58:33]   step 35/49 frac=0.035 el=2098s
+[00:58:40]   step 36/49 frac=0.036 el=2106s
+[00:58:48]   step 37/49 frac=0.037 el=2113s
+[00:58:55]   step 38/49 frac=0.038 el=2121s
+[00:59:03]   step 39/49 frac=0.039 el=2128s
+[01:09:19]   step 40/49 frac=0.040 el=2745s
+[01:09:27]   step 41/49 frac=0.041 el=2752s
+[01:09:34]   step 42/49 frac=0.042 el=2760s
+[01:09:42]   step 43/49 frac=0.043 el=2768s
+[01:09:50]   step 44/49 frac=0.044 el=2775s
+[01:09:57]   step 45/49 frac=0.045 el=2783s
+[01:10:05]   step 46/49 frac=0.046 el=2790s
+[01:10:12]   step 47/49 frac=0.047 el=2798s
+[01:10:20]   step 48/49 frac=0.048 el=2805s
+[01:10:28]   step 49/49 frac=0.049 el=2813s
+[01:10:28] DONE -> C:\Users\user\capability-relationship-map\results\llama31_8b_smoke
