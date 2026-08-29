@@ -20,3 +20,48 @@
 [01:35:14]   spatial_pattern        acc=0.15 nll=1.5270
 [01:35:47]   ethics                 acc=1.0 nll=0.4765
 [01:35:47] capture
+[01:41:33] A: overlap
+[01:41:34]   most entangled ['reading_comprehension', 'spatial_pattern', np.float64(0.7633), np.float64(0.6172)]; least ['creative_writing', 'spatial_pattern', np.float64(0.3059), np.float64(0.1806)]
+[01:41:34] B: allocation
+[01:41:34]   dead=0.269 excl=0.207 shared=0.495 core=0.029
+[01:41:34] C: stress to 70%
+[01:54:55]   step 0/699 frac=0.000 worst=coding:1.00 el=801s
+[02:00:30]   step 20/699 frac=0.020 worst=translation:1.08 el=1135s
+[02:06:05]   step 40/699 frac=0.040 worst=translation:1.16 el=1470s
+[02:11:39]   step 60/699 frac=0.060 worst=science_facts:1.47 el=1804s
+[02:28:51]   step 70/699 frac=0.070 worst=translation:1.39 el=2837s
+[02:31:38]   step 80/699 frac=0.080 worst=science_facts:1.40 el=3003s
+[02:37:14]   step 100/699 frac=0.100 worst=commonsense:1.28 el=3340s
+[02:42:51]   step 120/699 frac=0.120 worst=commonsense:1.58 el=3677s
+[03:06:44]   step 140/699 frac=0.140 worst=commonsense:1.71 el=5109s
+[03:12:20]   step 160/699 frac=0.160 worst=commonsense:2.06 el=5446s
+[03:17:56]   step 180/699 frac=0.180 worst=commonsense:2.56 el=5782s
+[03:23:31]   step 200/699 frac=0.200 worst=commonsense:2.94 el=6117s
+[03:44:28]   step 210/699 frac=0.210 worst=commonsense:3.42 el=7373s
+[03:47:15]   step 220/699 frac=0.220 worst=commonsense:3.63 el=7540s
+[03:52:50]   step 240/699 frac=0.240 worst=commonsense:4.15 el=7876s
+[03:58:27]   step 260/699 frac=0.260 worst=commonsense:4.14 el=8212s
+[04:22:36]   step 280/699 frac=0.280 worst=commonsense:4.18 el=9661s
+[04:28:12]   step 300/699 frac=0.300 worst=commonsense:4.18 el=9997s
+[04:33:49]   step 320/699 frac=0.320 worst=commonsense:4.27 el=10334s
+[04:39:26]   step 340/699 frac=0.340 worst=commonsense:4.04 el=10672s
+[04:56:53]   step 350/699 frac=0.350 worst=commonsense:4.09 el=11719s
+[04:59:40]   step 360/699 frac=0.360 worst=commonsense:4.35 el=11886s
+[05:05:17]   step 380/699 frac=0.380 worst=commonsense:5.33 el=12223s
+[05:10:55]   step 400/699 frac=0.400 worst=commonsense:5.50 el=12561s
+[05:32:31]   step 420/699 frac=0.420 worst=commonsense:5.21 el=13857s
+[05:38:07]   step 440/699 frac=0.440 worst=commonsense:5.93 el=14193s
+[05:43:43]   step 460/699 frac=0.460 worst=commonsense:5.82 el=14529s
+[05:49:20]   step 480/699 frac=0.480 worst=commonsense:6.01 el=14866s
+[06:13:04]   step 490/699 frac=0.490 worst=commonsense:6.49 el=16290s
+[06:15:53]   step 500/699 frac=0.500 worst=commonsense:6.21 el=16459s
+[06:21:28]   step 520/699 frac=0.520 worst=history_facts:7.40 el=16794s
+[06:27:05]   step 540/699 frac=0.540 worst=history_facts:7.99 el=17130s
+[06:49:07]   step 560/699 frac=0.560 worst=history_facts:10.89 el=18453s
+[06:54:42]   step 580/699 frac=0.580 worst=history_facts:16.11 el=18787s
+[07:00:26]   step 600/699 frac=0.600 worst=history_facts:17.75 el=19131s
+[07:06:03]   step 620/699 frac=0.620 worst=translation:16.75 el=19469s
+[07:25:48]   step 630/699 frac=0.630 worst=history_facts:18.82 el=20654s
+[07:28:36]   step 640/699 frac=0.640 worst=history_facts:20.28 el=20822s
+[07:34:22]   step 660/699 frac=0.660 worst=history_facts:22.18 el=21167s
+[07:39:57]   step 680/699 frac=0.680 worst=history_facts:23.79 el=21502s
