@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Llama Pilot Live Ledger</title><style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem}table{border-collapse:collapse;width:100%}th,td{border:1px solid #bbb;padding:.45rem;text-align:left}.blocked{color:#a00}.active{color:#075985}</style></head><body>
+<h1>Llama-3.1-8B int8 pilot — live ledger</h1>
+<p>Experiment: <code>llama31_8b_int8_pilot_v1</code>. Absence of a validated completion manifest means the pilot is incomplete.</p>
+<table><tr><th>Local date/time</th><th>Stage</th><th>Status</th><th>Evidence / next safe action</th></tr>
+<tr><td>2026-08-29</td><td>Scope lock</td><td>PASS</td><td>Two targets only (coding, translation), 0–10%, 100 dense states plus baseline; Qwen/full run prohibited.</td></tr>
+<tr><td>2026-08-29</td><td>Governing files</td><td>COMPLETE</td><td>No applicable AGENTS.md found. Both desktop HTML reports and both persistent HTML records read completely.</td></tr>
+<tr><td>2026-08-29</td><td>Old Llama provenance</td><td class="blocked">INVALID / INCOMPLETE</td><td>Interlink stopped after two target rows; zero-filled remainder; ΔNLL mislabeled as Δaccuracy; battery leakage/repetition; no adequate manifest.</td></tr>
+<tr><td>2026-08-29</td><td>New versioned root</td><td>CREATED</td><td><code>experiments/llama31_8b_int8_pilot_v1</code>; no old output will be overwritten.</td></tr>
+<tr><td>2026-08-29</td><td>Evidence/repository audit</td><td class="active">IN PROGRESS</td><td>Inventory source, configs, datasets, schemas, old logs/results; classify authoritative/obsolete/inconsistent files.</td></tr>
+<tr><td>2026-08-29</td><td>GPU jobs</td><td>NONE</td><td>GPU execution remains gated on frozen protocol, sealed battery, and passing implementation integrity tests.</td></tr>
+</table>
+<h2>Required remaining phases</h2>
+<ol><li>Freeze audited 720-item battery, localization prompts, manifests, seeds, metrics, controls, and gates.</li><li>Validate architecture, post-gate hook, joint tokenization, answer masking, determinism, nesting/hashes, no-op equivalence, resume, and safety guards.</li><li>Run baseline/capture/stability and a real-battery timed smoke.</li><li>Only if gates pass, run both dense target trajectories, controls, and sparse generation.</li><li>Analyze from raw artifacts, conduct independent audit, reconcile documentation, and issue GO/CONDITIONAL GO/NO-GO.</li></ol>
+<h2>Failures and restarts</h2>
+<p>None for the new pilot. Sandbox process creation initially failed with Windows DACL error during read-only inspection; the audit continued using approved elevated read-only commands. No experimental process was affected.</p>
+</body></html>

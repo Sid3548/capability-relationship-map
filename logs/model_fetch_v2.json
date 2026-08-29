@@ -1,0 +1,21 @@
+{
+  "started_at_unix": 1787990071.926192,
+  "models": {
+    "qwen": {
+      "name": "qwen",
+      "repo_id": "Qwen/Qwen3.5-9B",
+      "revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "local_dir": "D:\\hf_models\\Qwen3.5-9B",
+      "required_missing": [],
+      "safetensor_shards": 4,
+      "safetensor_bytes": 19306310880,
+      "config_sha256": "d0883072e01861ed0b2d47be3c16c36a8e81c224c7ffaa310c6558fb3f932b05",
+      "elapsed_seconds": 3.2505509853363037,
+      "status": "complete"
+    }
+  },
+  "status": "error",
+  "error_type": "GatedRepoError",
+  "error": "401 Client Error. (Request ID: Root=1-6a92903d-4a9f6f5230ef9d2c6692bd34;dbe6ce2e-4fd8-4631-9afb-0079df27ccaf)\n\nCannot access gated repo for url https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct/resolve/0e9e39f249a16976918f6564b8830bc894c89659/USE_POLICY.md.\nAccess to model meta-llama/Llama-3.1-8B-Instruct is restricted. You must have access to it and be authenticated to access it. Please log in.",
+  "finished_at_unix": 1787990076.4323337
+}

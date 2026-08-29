@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Two-Model Capability Removal Experiment — Context and Protocol</title>
+  <style>
+    body{font:16px/1.55 system-ui,sans-serif;max-width:1100px;margin:32px auto;padding:0 24px;color:#17202a;background:#fbfcfd}
+    h1,h2{line-height:1.2} code{background:#eef2f5;padding:.1em .3em;border-radius:4px}.warn{border-left:5px solid #c0392b;padding:12px 16px;background:#fdecea}.ok{border-left:5px solid #238636;padding:12px 16px;background:#eaf7ee}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccd6dd;padding:7px;vertical-align:top}th{background:#eef2f5}.muted{color:#5d6d7e}
+  </style>
+</head>
+<body>
+<h1>Two-Model Capability Removal Experiment</h1>
+<p><strong>Persistent context handoff</strong> · created 2026-08-29 Asia/Calcutta · update this file whenever the protocol, code, or run state changes.</p>
+
+<h2>Research objective</h2>
+<p>Map how 15 capabilities are distributed across MLP intermediate channels by cumulatively ablating the least-active channels for a target capability in increments no larger than 0.1%, measuring how far the target capability remains intact and how all other capabilities change. Compare exactly two models under the same protocol.</p>
+
+<h2>Locked decisions from the researcher</h2>
+<table>
+<tr><th>Item</th><th>Decision</th></tr>
+<tr><td>Models</td><td>Qwen3.5-9B and Llama-3.1-8B</td></tr>
+<tr><td>Precision</td><td>Both 8-bit quantized; compute precision and quantizer metadata must be recorded</td></tr>
+<tr><td>Capabilities</td><td>15 total; current candidate list is coding, math, formal logic, grammar, translation, reading comprehension, history facts, philosophy, science facts, commonsense, problem solving, creative writing, summarization, spatial pattern, and ethics</td></tr>
+<tr><td>Removal resolution</td><td>0.1% cumulative increments, up to 50% unless a validity/compute gate stops a run</td></tr>
+<tr><td>Cost</td><td>Keep the design cheap: high-resolution teacher-forced/logit metrics; generation only at selected checkpoints and around detected bends</td></tr>
+<tr><td>Documentation</td><td>Self-contained HTML context, run ledger, manifests, raw JSON/JSONL/NPZ, and an honest final comparison</td></tr>
+</table>
+
+<h2>Audit finding: prior Llama report is not a complete valid study</h2>
+<div class="warn"><strong>Do not cite the old Llama HTML as a completed experiment.</strong> Preserve it as provenance only.</div>
+<ul>
+<li>The D/interlink job stopped after only <strong>coding and math</strong>. The log ends after those two targets, the remaining 13 matrix rows are initialized zeros, and no completion manifest exists. The report generator nevertheless emitted completion language.</li>
+<li>The report labels values such as 3.34 as “Δaccuracy”; those values are actually read from the ΔNLL matrix. Absolute accuracy deltas cannot exceed 1 in magnitude.</li>
+<li>The comprehensive runner performs one global stress sweep, not 15 target-conditioned removal envelopes. It therefore does not answer the main target-by-target question.</li>
+<li>The runner uses only mean ablation for the comprehensive run, omits the required high control in the global sweep, uses only five random seeds at sparse points, ignores the accuracy-retention failure rule, and does not run the zero-ablation bound.</li>
+<li>The supposed held-out calibration mean is computed from the same 600 evaluation items, causing leakage.</li>
+<li>The high interlink mask is simply the top 5% for the target, not the documented target-specific-high set, and the report describes it inconsistently as top 20%.</li>
+<li>The random control is globally permuted rather than matched to the target mask's per-layer removal counts.</li>
+</ul>
+
+<h2>Audit finding: the existing 600-prompt battery is heavily redundant</h2>
+<div class="warn"><strong>The old activation aggregates and A/B overlap maps must be recomputed after rebuilding the batteries.</strong></div>
+<p>There are 600 rows but only 365 unique exact prompts. Several capabilities are dominated by one repeated item: coding repeats one addition prompt 20 times; creative writing repeats one rainy-afternoon prompt 30 times; ethics repeats one scenario 25 times and all 40 correct labels are B; history repeats “Egypt is in Africa” 20 times; science repeats oxygen's symbol 20 times. MCQ labels are severely imbalanced. Because capture is performed on teacher-forced answer positions, these repetitions and answer-letter distributions can dominate the neuron ranking.</p>
+
+<h2>Audit finding: NLL/capture implementation needs correction</h2>
+<ul>
+<li>Prompt and gold are tokenized separately and their token IDs concatenated. For BPE tokenizers this can differ from tokenizing the actual concatenated text at the boundary.</li>
+<li>Activation capture currently uses gold-answer positions only. That can measure answer-format/label-token circuitry more than the capability. The experiment must explicitly choose prompt-only, answer-only, or both and report sensitivity.</li>
+<li>A single-reference NLL is not a valid standalone quality metric for creative writing and is weak for open-ended translation/summarization.</li>
+<li>Relative NLL doubling is badly confounded when baseline NLL is already high; math and problem-solving showed 100% generation accuracy but baseline NLL around 11–13.</li>
+</ul>
+
+<h2>Qwen3.5 status</h2>
+<p>Weights were downloaded to <code>D:\hf_models\Qwen3.5-9B</code>, but the initial architecture verification stopped before any experiment. The downloaded config is <code>Qwen3_5ForConditionalGeneration</code> with text dimensions nested under <code>text_config</code>, 32 text layers, hidden size 4096, and intermediate size 12288. It is a hybrid text architecture with linear-attention and full-attention layers. The copied Llama runner assumes <code>AutoModelForCausalLM</code>, top-level dimensions, and a fixed <code>model.model.layers[*].mlp.down_proj</code> hook path; all of those assumptions require live verification. The local download also needs a completeness check for tokenizer and weight-index metadata.</p>
+
+<h2>Run arithmetic</h2>
+<p>For 15 capabilities and 0.1% increments from 0.1% through 50%, there are exactly <strong>7,500 ablated target-mask points</strong> (15 × 500), plus reusable unablated baselines. Evaluating all 15 capabilities × 40 prompts at every mask gives <strong>4,500,000 prompt evaluations</strong> on the primary low-activation track per model. This is feasible only with batched teacher-forced/logit scoring; full generation at every point is not cheap.</p>
+
+<h2>Cost-controlled protocol proposal (awaiting researcher confirmation)</h2>
+<ol>
+<li>Rebuild all batteries with unique, stratified items and balanced MCQ answer positions. Use separate localization and held-out evaluation items, or cross-fitting if the total must remain exactly 40 per capability.</li>
+<li>Static ranking, computed once per capability. Neuron = post-gating MLP intermediate channel feeding the down projection. Rank within each layer and remove the same fractional count per layer at every step.</li>
+<li>Primary curve: cumulative low-activation-first mean ablation, every 0.1% to 50%, teacher-forced NLL/logit-margin and task-specific score. Evaluate the target at every point; evaluate all 15 capabilities at a cheaper checkpoint schedule unless the researcher explicitly requires all 600 prompts at all 7,500 points.</li>
+<li>Controls: high-activation and layer-matched random at smoke gates and 1% checkpoints; five random seeds initially, expand only if confidence intervals are unstable. Zero ablation at checkpoints and around cliffs, not at all 500 points.</li>
+<li>Generation: baseline; every 5%; and dense 0.1–0.5% checkpoints around a detected bend. Greedy decoding and fixed parsers. Store per-item predictions, not only aggregate accuracy.</li>
+<li>Run a tiny architecture/hook smoke test on each model before any long run: verify exact tensor shape, one-channel intervention changes logits, ablated counts are exact, restoration is exact, and high removal hurts more than low removal.</li>
+<li>Run models sequentially on the one GPU. Every stage is resumable and atomic; incomplete matrices are represented by null plus completion masks, never zeros.</li>
+</ol>
+
+<h2>Open decisions requiring researcher confirmation</h2>
+<ol>
+<li>Does “40 prompts per capability” mean 40 total, forcing a train/eval split or cross-fitting, or may we use 40 localization + 40 held-out evaluation prompts per capability?</li>
+<li>At each of the 7,500 target-mask points, must all 600 prompts be scored, or can all 600 be scored at checkpoints while the target capability is scored at every 0.1% point?</li>
+<li>Confirm that coding and math are included inside the 15 capabilities (7,500 points total), not two additional capabilities (8,500 points).</li>
+<li>For model comparability, should the experiment use the downloaded base checkpoints exactly, or instruction-tuned checkpoints for both families? Mixing base and instruct is not acceptable for the headline comparison.</li>
+<li>Approve redesigning the existing prompts/evaluators rather than attempting to preserve backward compatibility with the invalid old battery.</li>
+</ol>
+
+<h2>Provenance and preservation</h2>
+<p>Old HTML and result directories will not be overwritten. Corrected runs will use new versioned directories and manifests containing model ID/revision/hash, tokenizer hash, quantization config, package versions, GPU/driver, prompt-battery hash, code git hash, seeds, mask-definition hash, completion bitmap, timestamps, and wall-clock timings.</p>
+</body>
+</html>

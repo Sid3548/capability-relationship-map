@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Llama-3.1-8B int8 Pilot Protocol</title>
+<style>body{font:16px/1.55 system-ui,sans-serif;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#17202a}h1,h2{color:#123b5d}code{background:#eef3f6;padding:.1rem .25rem}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccd6dd;padding:.45rem;text-align:left}.warn{border-left:5px solid #b03a2e;padding:1rem;background:#fdecea}.ok{border-left:5px solid #2874a6;padding:1rem;background:#eaf2f8}</style></head><body>
+<h1>Llama-3.1-8B int8 causal-ablation pilot — protocol handoff</h1>
+<p><strong>Protocol state:</strong> draft 0.1, evidence audit in progress. No GPU experiment has started. This document will be frozen and hashed before held-out intervention outcomes are examined.</p>
+<div class="warn"><strong>Scope lock.</strong> Only the coding- and translation-conditioned Llama pilot through 10.0% is authorized. Qwen and the complete 15-target/0–50% experiment are prohibited.</div>
+<h2>Research question and classification</h2>
+<p>Does cumulative intervention on globally lowest-ranked MLP channels, where ranking is independently conditioned on coding or translation localization prompts, reveal reproducible target dependence or directed collateral degradation across a fixed 15-capability battery? This is causal capability-conditioned lesion mapping using structured activation ablation, not structural pruning.</p>
+<p>Claims are limited to performance dependence under the specified intervention and the MLP-channel basis. The study will not claim that a channel stores or contains a capability, nor that the intervention exposes the model's complete algorithm.</p>
+<h2>Model and intervention unit</h2>
+<p>Checkpoint: local base <code>D:\hf_models\Meta-Llama-3.1-8B</code>, loaded offline with int8 weight quantization. The provisional unit is one channel of <code>h = SiLU(gate_proj(x)) * up_proj(x)</code> immediately before <code>down_proj</code>. Expected dimensions are 32 layers × 14,336 channels = 458,752 units; live inspection must confirm the module path, dimensions, dtypes, device placement, and absence of CPU offload.</p>
+<h2>Primary design</h2>
+<table><tr><th>Component</th><th>Frozen requirement</th></tr>
+<tr><td>Target rankings</td><td>Coding and translation, independently localized; primary score is mean absolute post-gate activation.</td></tr>
+<tr><td>Dense schedule</td><td>Baseline plus s=1…100, with k(s)=floor(N×s/1000); globally ranked, strictly nested masks, maximum 10.0%.</td></tr>
+<tr><td>Dense battery</td><td>720 fixed items at every state: 600 sealed held-out items (40 × 15) plus 120 separately labelled in-sample diagnostics. Publication conclusions use the sealed 600 only.</td></tr>
+<tr><td>Localization</td><td>At least 24–32 independent prompts per target, disjoint from held-out evaluation; preserved split seeds and bootstrap resamples.</td></tr>
+<tr><td>Primary outcome</td><td>Item-macro gold-token NLL, paired ΔNLL, perplexity ratio, and fail_frac_2x_gold_nll; first and five-state-sustained crossings reported.</td></tr>
+<tr><td>Generation</td><td>Predetermined 0, 1, 2, 5, and 10% checkpoints plus nearest states bracketing an observed bend; fixed decoding and task-specific grading.</td></tr>
+</table>
+<h2>Scoring and data integrity</h2>
+<p>Prompt and answer are tokenized jointly; loss is restricted to gold-answer tokens; items are macro-averaged so answer length does not control capability means. Padding side, attention masks, boundary cases, per-token outputs, answer-token counts, and parse status are persisted. The sealed 600 cannot influence ranking, metric choice, thresholds, prompts, controls, or checkpoint selection.</p>
+<h2>Ranking stability and comparators</h2>
+<p>Disjoint localization halves and prompt bootstraps will yield layerwise Spearman correlations and top-5%/top-10% Jaccard overlaps. Provisional gates are Spearman ≥0.80 and top-k Jaccard ≥0.60. Comparators at preregistered sentinels include activation×outgoing-weight magnitude, technically reliable Taylor scoring if feasible, high-importance, random layer-matched (at least ten deterministic seeds if runtime permits), global activity, and shuffled-target controls.</p>
+<h2>Interventions and sentinel controls</h2>
+<p>At 0, 0.5, 1, 2, 5, and 10%, compare calibration-mean replacement with zero replacement and feasible in-distribution/resampling replacement. Include empty-mask/no-op, high-importance, global, shuffled, and layer-matched random masks. If mean, zero, and resampling reverse the qualitative conclusion, causal interpretation stops.</p>
+<h2>Integrity gates before dense execution</h2>
+<ol><li>No-hook, empty-mask, and uninstrumented NLL/logits agree within declared tolerance.</li><li>Repeated seeded runs are deterministic.</li><li>Mask nesting, exact counts, indices, and hashes validate at all 100 states.</li><li>Gold-token masks pass unit tests and hand inspection.</li><li>The sealed 600 remains inaccessible to ranking and protocol adaptation.</li><li>All capability baselines are usable, parse failure is below the frozen limit, and closed-choice tasks are above chance.</li><li>Coding and translation functional baselines are strong enough to measure degradation.</li><li>Int8 placement, quantized modules, post-gate hook location, and dtypes are verified with no unexpected CPU offload.</li><li>A tiny timed smoke sweep produces the exact expected row counts and resumes safely.</li></ol>
+<h2>Statistical plan</h2>
+<p>The prompts, not the 101 correlated intervention states, are the main independent evaluation units. Analysis uses paired prompt bootstrap, calibration-ranking bootstrap, random-mask uncertainty, curve and breakpoint intervals, area under ΔNLL/retention curves, early-damage summaries, target-versus-nontarget specificity, and directed target→capability effects. Direction-level translation estimates (four items per direction) are explicitly exploratory.</p>
+<h2>Translation design</h2>
+<p>Languages: English, German, Spanish, Hindi, Arabic, and Mandarin Chinese. The held-out translation set has four items for each of ten English↔other-language directions. Reports separate overall, source-language, target-language, direction, script-family, English-dependence, and generic-collapse views.</p>
+<h2>Generic-collapse and quantization gates</h2>
+<p>A generic language-model monitor and all-capability macro outcome will define broad model damage before results are viewed. Int8 fidelity will compare a meaningful BF16/FP16 subset where feasible; suggested gates are ≤2 accuracy points or ≤5% relative NLL, ranking Spearman ≥0.85, and top-k overlap ≥0.70. If full higher-precision loading is infeasible, conclusions remain explicitly int8-scoped.</p>
+<h2>Current authoritative/provenance classification</h2>
+<p class="ok">Authoritative: the current user specification, the corrected persistent context/ledger, the to-be-frozen v1 manifests, datasets, raw rows, hashes, and completion records. Provenance only: old desktop reports, <code>logs/run_full_llama.log</code>, and <code>results/comprehensive_llama31_8b</code>. Old code is reusable only after audit and tests.</p>
+<h2>Directory map and current status</h2>
+<p>Pilot root: <code>experiments/llama31_8b_int8_pilot_v1</code>. Protocol: this file. Live execution record: <code>docs/LLAMA_PILOT_LIVE_LEDGER.html</code>. Final report: <code>docs/LLAMA_PILOT_REPORT.html</code>. Current stage: Stage 1 evidence/repository audit. Unresolved: battery reconstruction, exact calibration diagnostic composition, functional metric implementations, generic-collapse threshold, and runtime feasibility. Next safe action: finish source/data/result audit and freeze battery/protocol before any model load.</p>
+</body></html>
+

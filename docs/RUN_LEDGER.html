@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capability Removal Experiment — Run Ledger</title>
+  <style>body{font:15px/1.5 system-ui,sans-serif;max-width:1100px;margin:32px auto;padding:0 24px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #bbb;padding:7px;vertical-align:top}th{background:#eee}.stop{color:#a00;font-weight:700}.pending{color:#7a5200;font-weight:700}.done{color:#075f20;font-weight:700}code{background:#eee;padding:.1em .3em}</style>
+</head>
+<body>
+<h1>Capability Removal Experiment — Run Ledger</h1>
+<p>Created 2026-08-29 Asia/Calcutta. This file records stage status; absence of a completion manifest means a stage is incomplete.</p>
+<table>
+<tr><th>Model/stage</th><th>Status</th><th>Evidence / next gate</th></tr>
+<tr><td>Prior Llama-3.1-8B int8 report</td><td class="stop">INVALID / INCOMPLETE</td><td>Global C finished, D stopped after coding and math; report was generated from zero-filled unfinished rows. Preserve only as provenance.</td></tr>
+<tr><td>Prior Qwen2.5-0.5B / 3B reports</td><td class="pending">UNDER AUDIT</td><td>They use the same redundant 600-row battery and related pipeline, so headline claims are not reusable until the audit finishes.</td></tr>
+<tr><td>Qwen3.5-9B weights</td><td class="pending">DOWNLOADED; COMPLETENESS UNVERIFIED</td><td><code>D:\hf_models\Qwen3.5-9B</code>. Architecture gate stopped because the copied verifier assumed top-level Llama fields.</td></tr>
+<tr><td>Qwen3.5-9B architecture adapter</td><td class="stop">NOT IMPLEMENTED</td><td>Must verify official model class, tokenizer completeness, text-layer path, MLP down-projection hook, and int8 compatibility.</td></tr>
+<tr><td>Llama-3.1-8B weights</td><td class="done">AVAILABLE</td><td><code>D:\hf_models\Meta-Llama-3.1-8B</code>; 32 layers × 14336 MLP channels. New run must not reuse old aggregates.</td></tr>
+<tr><td>Corrected prompt battery v2</td><td class="stop">NOT BUILT</td><td>Awaiting decision on 40 total vs 40 localization + 40 held-out evaluation per capability.</td></tr>
+<tr><td>Corrected runner v2</td><td class="stop">NOT BUILT</td><td>Awaiting scope decision for target-only vs all-600 scoring at each 0.1% point.</td></tr>
+<tr><td>GPU jobs</td><td class="pending">NONE RUNNING</td><td>RTX 4060 Ti 16GB available; no experiment will start before prompt and protocol gates pass.</td></tr>
+</table>
+
+<h2>Stage gates</h2>
+<ol>
+<li>Protocol decisions recorded in <code>EXPERIMENT_CONTEXT.html</code>.</li>
+<li>Battery lint: exact/near duplicate checks, label balance, category/difficulty quotas, evaluator tests, leakage checks.</li>
+<li>Architecture smoke per model.</li>
+<li>Quantization fidelity subset per model.</li>
+<li>Three-control smoke; stop if high/random/low ordering is not informative.</li>
+<li>Full low-envelope curves with checkpointed controls and generation.</li>
+<li>Cross-model comparison only after both completion manifests validate.</li>
+</ol>
+
+<h2>Change log</h2>
+<ul>
+<li>2026-08-29: Created after auditing the prior Llama report and beginning the Qwen audit. No new GPU run launched.</li>
+</ul>
+</body>
+</html>

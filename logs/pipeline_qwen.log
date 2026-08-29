@@ -1,0 +1,16 @@
+[10:32:40] ============================================================
+[10:32:40] QWEN3.5-9B CAPABILITY-REMOVAL PIPELINE
+[10:32:40] ============================================================
+[10:32:40] Waiting for download completion...
+[10:42:10] Download status: done
+[10:42:10] Starting verify_qwen_arch...
+[10:42:10] verify_qwen_arch stdout:
+Config loaded from D:\hf_models\Qwen3.5-9B\config.json
+num_layers: None
+hidden_size: None
+intermediate_size: None
+hidden_act: 
+ERROR: Activation is , not silu
+
+[10:42:10] ERROR verify_qwen_arch rc=1
+[10:42:10] [BLOCK] Architecture verification failed

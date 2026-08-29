@@ -1,0 +1,28 @@
+{
+  "schema_version": "llama_pilot_status.v1",
+  "protocol_version": "draft-0.1",
+  "experiment_id": "llama31_8b_int8_pilot_v1",
+  "scope": {
+    "model_path": "D:\\hf_models\\Meta-Llama-3.1-8B",
+    "targets": ["coding", "translation"],
+    "maximum_fraction_percent": 10.0,
+    "dense_steps": 100,
+    "scored_items_per_state": 720
+  },
+  "state": "audit_in_progress",
+  "gpu_execution_started": false,
+  "full_experiment_authorized": false,
+  "qwen_authorized": false,
+  "created_local_date": "2026-08-29",
+  "authoritative_inputs": [
+    "docs/EXPERIMENT_CONTEXT.html",
+    "docs/RUN_LEDGER.html",
+    "the current user pilot specification"
+  ],
+  "provenance_only": [
+    "results/comprehensive_llama31_8b",
+    "logs/run_full_llama.log",
+    "the two desktop HTML reports"
+  ]
+}
+

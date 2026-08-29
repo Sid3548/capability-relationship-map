@@ -65,3 +65,8 @@
 [07:28:36]   step 640/699 frac=0.640 worst=history_facts:20.28 el=20822s
 [07:34:22]   step 660/699 frac=0.660 worst=history_facts:22.18 el=21167s
 [07:39:57]   step 680/699 frac=0.680 worst=history_facts:23.79 el=21502s
+[08:08:12]   step 699/699 frac=0.699 worst=history_facts:26.26 el=23198s
+[08:08:12]   fragility: ['commonsense', 'philosophy', 'ethics', 'history_facts', 'science_facts', 'translation', 'summarization', 'coding', 'reading_comprehension', 'creative_writing', 'spatial_pattern', 'math', 'formal_logic', 'grammar', 'problem_solving']
+[08:08:14] D: interlink
+[09:00:34]   coding done (3141s)
+[09:53:17]   math done (6303s)
